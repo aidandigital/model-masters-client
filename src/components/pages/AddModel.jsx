@@ -78,7 +78,7 @@ class AddModel extends Component {
         }
 
         axios
-          .post("/api/addModel", formData, {
+          .post("https://model-masters-api.herokuapp.com/api/addModel", formData, {
             // !!! Headers nessecary to transport files, don't touch!
             headers: {
               accept: "application/json",

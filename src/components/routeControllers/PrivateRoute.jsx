@@ -14,7 +14,7 @@ function PrivateRoute(props) {
   useEffect(() => {
     async function dataFetch() {
       axios
-        .get(props.apiRoute)
+        .get("https://model-masters-api.herokuapp.com" + props.apiRoute)
         .then((data) => {
             setRes(data.data);
         })

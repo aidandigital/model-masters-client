@@ -26,7 +26,7 @@ class Login extends Component {
 
     submitForm = (e) => {
         e.preventDefault();
-        axios.post('/api/login',
+        axios.post('https://model-masters-api.herokuapp.com/api/login',
             {
                 email: this.state.email,
                 password: this.state.password

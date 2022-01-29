@@ -8,7 +8,7 @@ import axios from "axios";
 
 const Header = () => {
   function logout() {
-    axios.get("/api/logout")
+    axios.get("https://model-masters-api.herokuapp.com/api/logout")
     .then(() => window.location.reload())
     .catch(() => alert("An error occured attempting to logout."))
   }

@@ -29,7 +29,7 @@ class Register extends Component {
 
     submitForm = (e) => {
         e.preventDefault();
-        axios.post('/api/register',
+        axios.post('https://model-masters-api.herokuapp.com/api/register',
             {
                 name: this.state.name,
                 email: this.state.email,

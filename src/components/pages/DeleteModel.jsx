@@ -31,7 +31,7 @@ class AddModel extends Component {
 
         e.preventDefault();
 
-            axios.post('/api/deleteModel',
+            axios.post('https://model-masters-api.herokuapp.com/api/deleteModel',
                 {
                     model_id: this.state.model_id,
                     reason: this.state.reason,

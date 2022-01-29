@@ -38,7 +38,7 @@ class ReportIssue extends Component {
 
         this.setState({loading: true})
 
-            axios.post('/api/reportIssue',
+            axios.post('https://model-masters-api.herokuapp.com/api/reportIssue',
                 {
                     url: this.state.url,
                     type: this.state.type,

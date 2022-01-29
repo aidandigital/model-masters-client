@@ -14,7 +14,7 @@ const UserRow = (props) => {
   const [ajaxRes, setAjaxRes] = useState({})
   function submitForm(e) {
     axios
-      .post(`/api/changeUserRole/`, {
+      .post(`https://model-masters-api.herokuapp.com/api/changeUserRole/`, {
         _id: props.user._id,
         type: e.target.value,
       })

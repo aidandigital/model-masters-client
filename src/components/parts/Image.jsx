@@ -12,7 +12,7 @@ const Image = (props) => {
       <img
         {...props}
         alt={props.alt ? props.alt : "Image"}
-        src={"/html/image/" + props.parentId + "." + props.imageName}
+        src={"https://model-masters-api.herokuapp.com/html/image/" + props.parentId + "." + props.imageName}
         loading="lazy"
         className={"object-cover object-center w-full" + (loaded ? (props.isThumbnail ? " h-50 sm:h-60" : " md:h-screen md:w-5/6 m-auto") : null)}
         onLoad={doneLoading}

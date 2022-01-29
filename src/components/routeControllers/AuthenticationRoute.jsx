@@ -11,7 +11,7 @@ function AuthenticationRoute(props) {
 
   useEffect(() => {
     async function dataFetch() {
-      axios.get("/api/checkLoggedInAlready").then((data) => {
+      axios.get("https://model-masters-api.herokuapp.com/api/checkLoggedInAlready").then((data) => {
         setLoggedInAlready(data.data.loggedInAlready);
         setResArrived(true);
       }).catch((error) => {
