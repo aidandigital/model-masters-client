@@ -24,7 +24,7 @@ const ImagesInput = (props) => {
         var fileNameBody = getFileNameBody(fileName)
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
         return new Promise((resolve, reject) => {
-            if (fileNameExt == "heic") {
+            if (fileNameExt === "heic") {
                 var blob = image;
                 heic2any({
                     blob: blob,

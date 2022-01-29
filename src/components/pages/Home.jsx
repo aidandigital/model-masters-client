@@ -15,6 +15,7 @@ const Home = (props) => {
       <img
         src={FrontPageImage}
         className="w-full h-screen object-cover object-center"
+        alt="Front page image"
       />
       <div className="absolute bottom-60 text-center w-full">
         <span className="w-full text-6xl text-white font-bold bg-primarydark py-1 leading-snug px-3 bg-opacity-50">{([0, 1, 2].includes(month) ? "Model Season is Open" : "Model Season is Closed")}</span>
