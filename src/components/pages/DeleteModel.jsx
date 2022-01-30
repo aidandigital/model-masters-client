@@ -7,7 +7,7 @@ import Message from "../parts/Message";
 import Title from "../parts/Title";
 import Section from "../parts/Section";
 import Spacer from "../parts/Spacer";
-import axios from "axios";
+import instance from "../../axiosInstance";
 import Header from "../parts/Header";
 
 class AddModel extends Component {
@@ -31,7 +31,7 @@ class AddModel extends Component {
 
         e.preventDefault();
 
-            axios.post('https://model-masters-api.herokuapp.com/api/deleteModel',
+            instance.post('/api/deleteModel',
                 {
                     model_id: this.state.model_id,
                     reason: this.state.reason,

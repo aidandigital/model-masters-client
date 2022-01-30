@@ -6,7 +6,7 @@ import SubmitButton from "../forms/SubmitButton";
 import Message from "../parts/Message";
 import Spacer from "../parts/Spacer";
 import Title from "../parts/Title";
-import axios from "axios";
+import instance from "../../axiosInstance";
 
 class Login extends Component {
     constructor(props) {
@@ -26,7 +26,7 @@ class Login extends Component {
 
     submitForm = (e) => {
         e.preventDefault();
-        axios.post('https://model-masters-api.herokuapp.com/api/login',
+        instance.post('/api/login',
             {
                 email: this.state.email,
                 password: this.state.password

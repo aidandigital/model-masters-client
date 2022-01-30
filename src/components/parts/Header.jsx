@@ -4,11 +4,11 @@ import logo from "../imgs/logo.png";
 import { Link } from "react-router-dom";
 import { UserCircleIcon, PencilAltIcon, LogoutIcon } from "@heroicons/react/outline"
 import Dropdown from "./Dropdown";
-import axios from "axios";
+import instance from "../../axiosInstance";
 
 const Header = () => {
   function logout() {
-    axios.get("https://model-masters-api.herokuapp.com/api/logout")
+    instance.get("https://model-masters-api.herokuapp.com/api/logout")
     .then(() => window.location.reload())
     .catch(() => alert("An error occured attempting to logout."))
   }

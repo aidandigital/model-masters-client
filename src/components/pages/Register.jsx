@@ -8,7 +8,7 @@ import Note from "../parts/Note";
 import Spacer from "../parts/Spacer";
 import Title from "../parts/Title";
 import { Link, Redirect } from "react-router-dom";
-import axios from "axios";
+import instance from "../../axiosInstance";
 
 class Register extends Component {
     constructor(props) {
@@ -29,7 +29,7 @@ class Register extends Component {
 
     submitForm = (e) => {
         e.preventDefault();
-        axios.post('https://model-masters-api.herokuapp.com/api/register',
+        instance.post('/api/register',
             {
                 name: this.state.name,
                 email: this.state.email,

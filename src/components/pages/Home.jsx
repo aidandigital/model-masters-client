@@ -8,7 +8,7 @@ import Title from "../parts/Title";
 const Home = (props) => {
   let date = new Date();
   let month = date.getMonth();
-  console.log(month)
+  
   return (
     <>
       <Header />

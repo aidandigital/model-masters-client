@@ -10,7 +10,7 @@ import Section from "../parts/Section";
 import Spacer from "../parts/Spacer";
 import Note from "../parts/Note";
 import TinyLoader from "../forms/TinyLoader";
-import axios from "axios";
+import instance from "../../axiosInstance";
 import Header from "../parts/Header";
 import Footer from "../parts/Footer";
 
@@ -38,7 +38,7 @@ class ReportIssue extends Component {
 
         this.setState({loading: true})
 
-            axios.post('https://model-masters-api.herokuapp.com/api/reportIssue',
+            instance.post('/api/reportIssue',
                 {
                     url: this.state.url,
                     type: this.state.type,

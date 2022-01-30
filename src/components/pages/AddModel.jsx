@@ -12,7 +12,7 @@ import Title from "../parts/Title";
 import { Redirect } from "react-router-dom";
 import Section from "../parts/Section";
 import Spacer from "../parts/Spacer";
-import axios from "axios";
+import instance from "../../axiosInstance";
 import Header from "../parts/Header";
 import Footer from "../parts/Footer";
 
@@ -77,8 +77,8 @@ class AddModel extends Component {
             formData.append(key, regularFields[key]);
         }
 
-        axios
-          .post("https://model-masters-api.herokuapp.com/api/addModel", formData, {
+        instance
+          .post("/api/addModel", formData, {
             // !!! Headers nessecary to transport files, don't touch!
             headers: {
               accept: "application/json",

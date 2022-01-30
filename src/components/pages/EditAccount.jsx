@@ -12,7 +12,7 @@ import Title from "../parts/Title";
 import { Redirect, Link } from "react-router-dom";
 import Section from "../parts/Section";
 import Button from "../parts/Button";
-import axios from "axios";
+import instance from "../../axiosInstance";
 import Header from "../parts/Header";
 
 class Register extends Component {
@@ -40,7 +40,7 @@ class Register extends Component {
 
     submitForm = (e) => {
         e.preventDefault();
-        axios.post('https://model-masters-api.herokuapp.com/api/updateAccount',
+        instance.post('/api/updateAccount',
             {
                 name: this.state.name,
                 bio: this.state.bio,

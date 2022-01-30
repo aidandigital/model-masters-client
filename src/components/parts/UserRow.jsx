@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import instance from "../../axiosInstance";
 import UserLink from "./UserLink";
 import Row from "./Row";
 import Button from "./Button";
@@ -13,8 +13,7 @@ import { UserContext } from "../../context/UserContext";
 const UserRow = (props) => {
   const [ajaxRes, setAjaxRes] = useState({})
   function submitForm(e) {
-    axios
-      .post(`https://model-masters-api.herokuapp.com/api/changeUserRole/`, {
+      instance.post(`/api/changeUserRole/`, {
         _id: props.user._id,
         type: e.target.value,
       })
