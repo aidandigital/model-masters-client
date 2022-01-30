@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import Error from "../errorPages/Error";
 import Loading from "../loader/Loading";
-import axios from "axios";
+import instance from "../../axiosInstance";
 
 function AuthenticationRoute(props) {
   const [loggedInAlready, setLoggedInAlready] = useState(false);
@@ -11,7 +11,7 @@ function AuthenticationRoute(props) {
 
   useEffect(() => {
     async function dataFetch() {
-      axios.get("https://model-masters-api.herokuapp.com/api/checkLoggedInAlready").then((data) => {
+      instance.get("/api/checkLoggedInAlready").then((data) => {
         setLoggedInAlready(data.data.loggedInAlready);
         setResArrived(true);
       }).catch((error) => {

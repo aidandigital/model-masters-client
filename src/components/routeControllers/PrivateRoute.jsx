@@ -4,7 +4,7 @@ import Pending from "../errorPages/Pending";
 import Error from "../errorPages/Error";
 import Forbidden from "../errorPages/403";
 import Loading from "../loader/Loading";
-import axios from "axios";
+import instance from "../../axiosInstance";
 import { UserContext } from "../../context/UserContext";
 
 function PrivateRoute(props) {
@@ -13,8 +13,8 @@ function PrivateRoute(props) {
 
   useEffect(() => {
     async function dataFetch() {
-      axios
-        .get("https://model-masters-api.herokuapp.com" + props.apiRoute)
+      instance
+        .get(props.apiRoute)
         .then((data) => {
             setRes(data.data);
         })
