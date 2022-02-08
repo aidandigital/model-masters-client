@@ -46,7 +46,7 @@ const App = () => {
           <PrivateRoute component={Users} apiRoute="/html/users" />
         </Route>
         <Route path="/user/:_id" exact key={generateKey()}>
-          {() => <PrivateRoute component={User} apiRoute={"/html/" + window.location.pathname} />}
+          {() => <PrivateRoute component={User} apiRoute={"/html" + window.location.pathname} />}
         </Route>
         {/* !!! The user route requires that the private route is returned by a function in order to ensure it updates each time, and the account editor needs a key */}
         {/* !!! [?] It seems functional components need a key and class components need to be called returned inside a function in the route in order to update themselves when visited by a Link */}
@@ -60,10 +60,10 @@ const App = () => {
           <PrivateRoute component={AddModel} apiRoute={"/html/addModel"} />
         </Route>
         <Route path="/model/:_id" exact key={generateKey()}>
-          {() => <PrivateRoute component={Model} apiRoute={"/html/" + window.location.pathname} />}
+          {() => <PrivateRoute component={Model} apiRoute={"/html" + window.location.pathname} />}
         </Route>
         <Route path="/deleteModel/:_id" exact key={generateKey()}>
-          {() => <PrivateRoute component={DeleteModel} apiRoute={"/html/" + window.location.pathname} />}
+          {() => <PrivateRoute component={DeleteModel} apiRoute={"/html" + window.location.pathname} />}
         </Route>
         <Route path="/models" exact key={generateKey()}>
           <PrivateRoute component={Models} apiRoute="/html/models" />
