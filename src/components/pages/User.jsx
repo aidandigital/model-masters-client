@@ -59,7 +59,7 @@ const User = (props) => {
                       <Row>
                         <div className="text-center mb-1">
                           <Link to={"/model/" + model._id}>
-                            <Image parentId={model._id} imageName={model.thumbnail} isThumbnail={true} />
+                            <Image src={model.thumbnail} isThumbnail={true} />
                             <p className="mt-5 font-bold mb-3 text-xl font-serif hover:text-primarydark duration-200">{model.name}</p>
                           </Link>
                           {model.type}
