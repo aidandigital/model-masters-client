@@ -89,7 +89,7 @@ render() {
                 <Spacer height="3" />
                 <SubmitButton onClick={this.submitForm}>Report</SubmitButton>
                 {this.state.loading ?<div className="inline-block relative top-3 mr-3 ml-2"><TinyLoader /></div> : null}
-                <div className="inline-block"><Note>Submission could take a minute, please be patient</Note></div>
+                <div className="inline-block"><Note>Submissions could take a minute, please be patient</Note></div>
                 {(this.state.success ? null : <Message isSuccess={false} errType={this.state.errType}>{this.state.message.general}</Message>)}
             </form>
             <Spacer />

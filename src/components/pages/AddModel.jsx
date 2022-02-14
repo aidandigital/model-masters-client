@@ -15,6 +15,7 @@ import Spacer from "../parts/Spacer";
 import instance from "../../axiosInstance";
 import Header from "../parts/Header";
 import Footer from "../parts/Footer";
+import TinyLoader from "../forms/TinyLoader";
 
 class AddModel extends Component {
     constructor(props) {
@@ -31,6 +32,7 @@ class AddModel extends Component {
             errType: '',
             success: false,
             model_id: null,
+            loading: false,
         }
     }
 
@@ -53,6 +55,8 @@ class AddModel extends Component {
     submitForm = (e) => {
         e.preventDefault();
 
+        this.setState({loading: true})
+
         // !!! Must use FormData format in order to using multipart/form-data with axios
         let formData = new FormData();
 
@@ -70,8 +74,6 @@ class AddModel extends Component {
             formData.append("images", image, image.name)
         });
 
-        console.log(this.state.images)
-
         // Append the rest of the fields to FormData
         for (var key in regularFields) {
             formData.append(key, regularFields[key]);
@@ -87,12 +89,14 @@ class AddModel extends Component {
             },
           } 
         ).then((data) => {
+            this.setState({loading: false})
             if (!data.data.success) {
                 this.setState({ success: false, message: data.data.message, errType: data.data.errType });
             } else {
                 this.setState({ success: true, model_id: data.data.model_id });
             }
         }).catch(() => {
+            this.setState({loading: false})
             this.setState({success: false, message: {general: "An error occured, try again later"}})
         });;
     }
@@ -132,6 +136,8 @@ render() {
                 <Note>Seperate different facts above by hitting enter or return on your keyboard</Note>
                 <Spacer height="3" />
                 <SubmitButton onClick={this.submitForm}>Submit</SubmitButton>
+                {this.state.loading ?<div className="inline-block relative top-3 mr-3 ml-2"><TinyLoader /></div> : null}
+                <div className="inline-block"><Note>Submissions could take a minute, please be patient</Note></div>
                 {(this.state.model_id ? <Redirect to={"/model/" + this.state.model_id}/> : <Message isSuccess={false} errType={this.state.errType}>{this.state.message.general}</Message>)}
             </form>
             <Spacer />
