@@ -12,6 +12,7 @@ import Row from "../parts/Row";
 import Image from "../parts/Image";
 import Header from "../parts/Header";
 import Footer from "../parts/Footer";
+import RoleParser from "../parts/RoleParser";
 
 const User = (props) => {
   return (
@@ -23,7 +24,7 @@ const User = (props) => {
             <div className="inline-block">
               <SmallTitle>{props.data.name}</SmallTitle>
               <span className="mr-2 ml-2 relative bottom-1">
-                <UserMeta>{props.data.role}</UserMeta>
+                <UserMeta><RoleParser>{props.data.role}</RoleParser></UserMeta>
               </span>
             </div>
             <div className="inline-block m-auto md:mx-4 lg:mx-6">
