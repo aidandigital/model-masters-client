@@ -12,6 +12,7 @@ import { LinkIcon, TrashIcon } from "@heroicons/react/outline";
 import Spacer from "../parts/Spacer";
 import Header from "../parts/Header";
 import Footer from "../parts/Footer";
+import RoleParser from "../parts/RoleParser";
 
 const Model = (props) => {
   return (
@@ -27,7 +28,7 @@ const Model = (props) => {
                   <p>By<UserLink _id={props.data.user._id} name={props.data.user.name} /></p>
                 </span>
                 <span className="inline-block">
-                  <UserMeta>{props.data.user.role}</UserMeta>
+                  <UserMeta><RoleParser>{props.data.user.role}</RoleParser></UserMeta>
                 </span>
               </div>
             </div>
