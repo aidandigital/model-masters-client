@@ -87,7 +87,7 @@ render() {
                 <Label>Description of the Issue</Label>
                 <ParagraphInput name="description" onChange={this.setInput} value={this.state.password} error={this.state.message.description} placeholder={this.state.type === "error" ? "Provide as much detail as you can regarding what happened" : (["model", "user"].includes(this.state.type) ? "How is the user/model in question damaging the integrity of the site?" : "")} />
                 <Spacer height="3" />
-                <div className={this.state.loading ? "not-allowed opacity-60" : null}>
+                <div className={this.state.loading ? "cursor-not-allowed opacity-60" : null}>
                     <SubmitButton disabled={this.state.loading} onClick={this.submitForm}>Report</SubmitButton>
                 </div>
                 {this.state.loading ?<div className="inline-block relative top-3 mr-3 ml-2"><TinyLoader /></div> : null}

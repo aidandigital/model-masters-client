@@ -135,7 +135,7 @@ render() {
                 <ParagraphInput name="facts" value={this.state.facts} onChange={this.setInput} placeholder="Are there any interesting facts about this model, mistakes you made, cool stories?" error={this.state.message.facts} />
                 <Note>Seperate different facts above by hitting enter or return on your keyboard</Note>
                 <Spacer height="3" />
-                <div className={this.state.loading ? "not-allowed opacity-60" : null}>
+                <div className={this.state.loading ? "cursor-not-allowed opacity-60" : null}>
                     <SubmitButton disabled={this.state.loading} /* << Important */ onClick={this.submitForm}>Submit</SubmitButton>
                 </div>
                 {this.state.loading ?<div className="inline-block relative top-3 mr-3 ml-2"><TinyLoader /></div> : null}
