@@ -135,7 +135,9 @@ render() {
                 <ParagraphInput name="facts" value={this.state.facts} onChange={this.setInput} placeholder="Are there any interesting facts about this model, mistakes you made, cool stories?" error={this.state.message.facts} />
                 <Note>Seperate different facts above by hitting enter or return on your keyboard</Note>
                 <Spacer height="3" />
-                <SubmitButton onClick={this.submitForm}>Submit</SubmitButton>
+                <div className={this.state.loading ? "not-allowed opacity-60" : null}>
+                    <SubmitButton disabled={this.state.loading} /* << Important */ onClick={this.submitForm}>Submit</SubmitButton>
+                </div>
                 {this.state.loading ?<div className="inline-block relative top-3 mr-3 ml-2"><TinyLoader /></div> : null}
                 <div className="inline-block"><Note>Submissions could take a minute, please be patient</Note></div>
                 {(this.state.model_id ? <Redirect to={"/model/" + this.state.model_id}/> : <Message isSuccess={false} errType={this.state.errType}>{this.state.message.general}</Message>)}
