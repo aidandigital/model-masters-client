@@ -6,7 +6,7 @@ const ImageSlider = (props) => {
   const [slideIndex, setSlideIndex] = useState(0);
 
   function next() {
-    if (slideIndex + 1 === props.imageNames.length) {
+    if (slideIndex + 1 === props.images.length) {
       setSlideIndex(0);
     } else {
       setSlideIndex(slideIndex + 1);
@@ -15,7 +15,7 @@ const ImageSlider = (props) => {
 
   function back() {
     if (slideIndex === 0) {
-      setSlideIndex(props.imageNames.length - 1);
+      setSlideIndex(props.images.length - 1);
     } else {
       setSlideIndex(slideIndex - 1);
     }
@@ -23,9 +23,9 @@ const ImageSlider = (props) => {
 
   return (
     <div>
-      {props.imageNames.map((image, i) => (
+      {props.images.map((image, i) => (
         <div className={i !== slideIndex ? "hidden" : ""}>
-          <Image parentId={props.parentId} imageName={image} />
+          <Image src={image} />
         </div>
       ))}
       <div className="text-center m-2">
@@ -37,3 +37,4 @@ const ImageSlider = (props) => {
 };
 
 export default ImageSlider;
+

@@ -43,7 +43,7 @@ const Model = (props) => {
           </Section>
           <Section>
             <div>
-              <ImageSlider parentId={props.data._id} imageNames={props.data.images} />
+              <ImageSlider images={props.data.images} />
               <Subtitle>About</Subtitle>
               Type: <Badge>{props.data.type}</Badge>
               <Spacer height="5" />
