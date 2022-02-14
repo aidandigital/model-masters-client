@@ -14,7 +14,6 @@ import Header from "../parts/Header";
 import Footer from "../parts/Footer";
 
 const Model = (props) => {
-    console.log(props.data)
   return (
     <UserContext.Consumer>
       {(currentUser) => (
