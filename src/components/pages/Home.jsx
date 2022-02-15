@@ -8,17 +8,20 @@ import Title from "../parts/Title";
 const Home = (props) => {
   let date = new Date();
   let month = date.getMonth();
-  
+  let status = ([0, 1, 2].includes(month) ? "Model Season is Open" : "Model Season is Closed");
+
   return (
     <>
       <Header />
       <img
         src={FrontPageImage}
-        className="w-full h-screen object-cover object-center"
-        alt="Front page image"
+        className="h-30 w-full sm:h-screen object-cover object-center"
       />
-      <div className="absolute bottom-60 text-center w-full">
-        <span className="w-full text-6xl text-white font-bold bg-primarydark py-1 leading-snug px-3 bg-opacity-50">{([0, 1, 2].includes(month) ? "Model Season is Open" : "Model Season is Closed")}</span>
+      <div className="hidden md:block absolute bottom-60 text-center w-full">
+        <span className="w-full text-6xl text-white font-bold bg-primarydark py-1 leading-snug px-3 bg-opacity-50">{status}</span>
+      </div>
+      <div className="block md:hidden text-center w-full bg-secondarydark p-3">
+        <span className="w-full text-3xl text-white font-bold py-1 leading-snug px-3 bg-opacity-50">{status}</span>
       </div>
       <Section background="secondarybackground">
         <Title color="black">About</Title>
