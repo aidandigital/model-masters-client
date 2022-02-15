@@ -55,7 +55,7 @@ const User = (props) => {
                     <Link to="/addModel"><Button moreSpacing={true} type="important" icon={DocumentAddIcon}>Publish a Model</Button></Link>
                   </div>
                   : null}
-                  {props.data.models ? <>
+                  {props.data.models.length > 0 ? <>
                     {props.data.models.map((model, i) => (
                      <Column key={i}>
                       <Row>
