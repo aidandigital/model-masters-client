@@ -18,8 +18,9 @@ const User = (props) => {
   return (
     <UserContext.Consumer>
       {(currentUser) => (
-        <div className="min-h-screen">
+        <>
           <Header />
+          <div className="min-h-screen">
           <Section background="thirdlybackground">
             <div className="inline-block">
               <SmallTitle>{props.data.name}</SmallTitle>
@@ -73,8 +74,9 @@ const User = (props) => {
               }
             </div>
           </Section>
+          </div>
           <Footer />
-        </div>
+        </>
       )}
     </UserContext.Consumer>
   );
