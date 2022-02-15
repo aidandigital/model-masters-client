@@ -20,6 +20,7 @@ const User = (props) => {
       {(currentUser) => (
         <>
           <Header />
+          <div className="min-h-screen">
           <Section background="thirdlybackground">
             <div className="inline-block">
               <SmallTitle>{props.data.name}</SmallTitle>
@@ -73,6 +74,7 @@ const User = (props) => {
               }
             </div>
           </Section>
+          </div>
           <Footer />
         </>
       )}

@@ -1,6 +1,5 @@
 import { Component } from "react";
 import TextInput from "../forms/TextInput";
-// import RadioButton from "../forms/radioButtons/RadioButton";
 import SubmitButton from "../forms/SubmitButton";
 import Label from "../forms/Label";
 import Message from "../parts/Message";
@@ -9,6 +8,7 @@ import Section from "../parts/Section";
 import Spacer from "../parts/Spacer";
 import instance from "../../axiosInstance";
 import Header from "../parts/Header";
+import Footer from "../parts/Footer";
 
 class AddModel extends Component {
     constructor(props) {
@@ -54,15 +54,16 @@ render() {
       {this.state.success ?
       <>
       <Header />
-        <Section>
+        <Section fullHeight={true}>
           <Title>Successfully Deleted</Title>
           <p className="text-center">We are sorry to see your model go!</p>
         </Section>
+        <Footer />
       </>
       :
       <>
         <Header />
-        <Section>
+        <Section fullHeight={true}>
             <Title>Delete a Model</Title>
             <form className="w-full sm:w-4/5 md:w-3/5 m-auto">
                 <Label>Model ID</Label>
@@ -87,6 +88,7 @@ render() {
             </form>
             <Spacer />
         </Section>
+        <Footer />
         </>
       }
     </>
