@@ -7,7 +7,7 @@ const NoCrossCookies = () => (
   <div className="text-center">
     <Title>3rd Party Cookies are Disabled</Title>
     <p className="m-3">In your browser settings, turn on 3rd party cookies (also known as cross site tracking).</p>
-    <p onClick={() => {alert(
+    <p className="bg-secondarydark cursor-pointer p-3" onClick={() => {alert(
         `
         iPhone: Go to Settings > Safari > then uncheck "prevent cross site tracking"
         Laptop (Safari): Go to Prefrences > Privacy > then uncheck "prevent cross site tracking"
