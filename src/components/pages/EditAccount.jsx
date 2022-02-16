@@ -71,7 +71,7 @@ render() {
             <Label>Bio</Label>
             <ParagraphInput name="bio" type="text" rows="3" value={this.state.bio} onChange={this.setInput} error={this.state.message.bio} placeholder="Tell us about yourself..." />
             <Label>Model types</Label>
-            <TagInput name="types" customStateSetter={this.setTagInput} value={this.state.types} allowedTags={["Cars", "Tanks", "Trains", "Ships", "Trucks"]} error={this.state.message.types} description="What kinds of models do you make?" />
+            <TagInput name="types" customStateSetter={this.setTagInput} value={this.state.types} allowedTags={["Cars", "Tanks", "Trains", "Ships", "Trucks"]} error={this.state.message.types} description="What kind of models like?" />
             <Label>Full Name</Label>
             <TextInput name="name" type="text" value={this.state.name} onChange={this.setInput} error={this.state.message.name} />
             <div className="-mt-3">
