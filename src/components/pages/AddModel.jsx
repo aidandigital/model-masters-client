@@ -129,7 +129,7 @@ render() {
                 <Label>Approximate completion date</Label>
                 <MonthYearInput monthInputName="completionMonth" monthValue={this.state.completionMonth} yearValue={this.state.completionYear} yearInputName="completionYear" onChange={this.setInput} minYear="1940" defaultYear={new Date().getFullYear()} monthError={this.state.message.completionMonth} yearError={this.state.message.completionYear} />
                 <Label>Photos</Label>
-                <ImagesInput maxImages={8} customStateSetter={this.setImagesInput} value={this.state.images} error={this.state.message.images} />
+                <ImagesInput maxImages={10} customStateSetter={this.setImagesInput} value={this.state.images} error={this.state.message.images} />
                 <div className="inline-block"><Label>Fun facts</Label></div>
                 <div className="inline-block ml-1"><Note>(optional)</Note></div>
                 <ParagraphInput name="facts" value={this.state.facts} onChange={this.setInput} placeholder="Are there any interesting facts about this model, mistakes you made, cool stories?" error={this.state.message.facts} />
@@ -139,7 +139,7 @@ render() {
                     <SubmitButton disabled={this.state.loading} /* << Important */ onClick={this.submitForm}>Submit</SubmitButton>
                 </div>
                 {this.state.loading ?<div className="inline-block relative top-3 mr-3 ml-2"><TinyLoader /></div> : null}
-                <div className="inline-block"><Note>Submissions could take a minute, please be patient</Note></div>
+                <div className="inline-block"><Note>Submissions could take a few minutes, you will be redirected when done</Note></div>
                 {(this.state.model_id ? <Redirect to={"/model/" + this.state.model_id}/> : <Message isSuccess={false} errType={this.state.errType}>{this.state.message.general}</Message>)}
             </form>
             <Spacer />
