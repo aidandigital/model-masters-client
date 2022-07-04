@@ -32,6 +32,7 @@
         .noscript-container {
           text-align: center;
           margin: 10px;
+          font-family: Sans-Serif;
         }
 
         .noscript-button {
@@ -43,18 +44,29 @@
           border-radius: 2px;
         }
 
+        .noscript-clickable {
+          transition-duration: 300ms;
+        }
+
         .noscript-clickable:hover {
           cursor: pointer;
+          opacity: .85;
+          transition-duration: 300ms;
         }
 
         .noscript-p {
           padding: 4px;
+          line-height: 22px;
         }
       </style>
       <div class="noscript-container">
-        <h2>You need to enable JavaScript to use this website.</h2>
         <br />
-        <a href="https://www.whatismybrowser.com/guides/how-to-enable-javascript/"><button class="noscript-button noscript-clickable">Help me enable JavaScript</button></a>
+        <h2>You must enable JavaScript to use this website.</h2>
+        <br />
+        <a href="https://www.whatismybrowser.com/guides/how-to-enable-javascript/" target="_blank"><button class="noscript-button noscript-clickable">Help me enable JavaScript</button></a>
+        <br />
+        <br />
+        <div>Refresh this page after you enable it.</div>
         <br />
         <br />
         <br />
@@ -75,14 +87,6 @@
             </summary>
             <p class="noscript-p">About 97% of websites use JavaScript. If you have it disabled, most websites will be broken, or completely unavailable.</p>
           </details>
-          <br />
-          <details>
-            <summary class="noscript-clickable">
-              Is disabling JavaScript more secure?
-            </summary>
-            <p class="noscript-p"><b>Disabling JavaScript provides minimal security and major inconvenience.</b> Although nothing on the internet is 100% secure, JavaScript is relatively safe because it is generally limited to just the current web page. JavaScript cannot access your files, camera, location, or microphone without your explicit permission. You can use JavaScript safely by reviewing your browser's privacy settings, visiting only legitimate websites, and being cautious of what websites you enter sensitive information on.</p>
-          </details>
-          <br />
         </div>
       </div>
     </noscript>
