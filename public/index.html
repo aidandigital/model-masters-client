@@ -28,29 +28,63 @@
   </head>
   <body>
     <noscript>
-      You need to enable JavaScript to use this website.
-      <br />
-      <br />
-      <details>
-        <summary>
-          What is JavaScript?
-        </summary>
-        JavaScript (JS) is a scripting language used to make websites interactive. It can be used to do something when you click a button, update a page's content, and more.
-      </details>
-      <br />
-      <details>
-        <summary>
-          Does disabling JavaScript protect me?
-        </summary>
-        Disabling JavaScript provides minimal security and major inconvenience. JavaScript is relatively safe because it is generally limited to the current web page and some information from the browser. JavaScript cannot access your files, camera, location, or microphone without your explicit permission. The biggest vulnerability comes from when developers don't properly filter user submitted content (XSS). You can use JavaScript safely by reviewing your browser's privacy settings, visiting only legitimate websites, and being extra careful what websites you enter sensitive information on.
-      </details>
-      <br />
-      <details>
-        <summary>
-          How can I enable JavaScript?
-        </summary>
-        JavaScript can be enabled in you browser's settings. <a href="https://www.enable-javascript.com">Learn More</a>
-      </details>
+      <style>
+        .noscript-container {
+          text-align: center;
+          margin: 10px;
+        }
+
+        .noscript-button {
+          padding: 10px 15px;
+          font-size: 1em;
+          background-color: rgb(9, 154, 9);
+          color: white;
+          border: none;
+          border-radius: 2px;
+        }
+
+        .noscript-clickable:hover {
+          cursor: pointer;
+        }
+
+        .noscript-p {
+          padding: 4px;
+        }
+      </style>
+      <div class="noscript-container">
+        <h2>You need to enable JavaScript to use this website.</h2>
+        <br />
+        <a href="https://www.whatismybrowser.com/guides/how-to-enable-javascript/"><button class="noscript-button noscript-clickable">Help me enable JavaScript</button></a>
+        <br />
+        <br />
+        <br />
+        <div style="text-align:left">
+          FAQ:
+          <br />
+          <br />
+          <details>
+            <summary class="noscript-clickable">
+              What is JavaScript?
+            </summary>
+            <p class="noscript-p">JavaScript is a computer language that makes websites interactive.</p>
+          </details>
+          <br />
+          <details>
+            <summary class="noscript-clickable">
+              Why do I need JavaScript?
+            </summary>
+            <p class="noscript-p">About 97% of websites use JavaScript. If you have it disabled, most websites will be broken, or completely unavailable.</p>
+          </details>
+          <br />
+          <details>
+            <summary class="noscript-clickable">
+              Is disabling JavaScript more secure?
+            </summary>
+            <p class="noscript-p"><b>Disabling JavaScript provides minimal security and major inconvenience.</b> Although nothing on the internet is 100% secure, JavaScript is relatively safe because it is generally limited to just the current web page. JavaScript cannot access your files, camera, location, or microphone without your explicit permission. You can use JavaScript safely by reviewing your browser's privacy settings, visiting only legitimate websites, and being cautious of what websites you enter sensitive information on.</p>
+          </details>
+          <br />
+        </div>
+      </div>
     </noscript>
     <div id="root"></div>
     <!--
