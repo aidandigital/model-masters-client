@@ -3,13 +3,10 @@ import { Redirect } from "react-router-dom";
 import Error from "../errorPages/Error";
 import Loading from "../loader/Loading";
 import instance from "../../axiosInstance";
-import cookieCheck from "third-party-cookie-check";
-import NoCrossCookies from "../errorPages/NoCrossCookies";
 
 function AuthenticationRoute(props) {
   const [loggedInAlready, setLoggedInAlready] = useState(false);
   const [resArrived, setResArrived] = useState(false);
-  const [crossCookieSupport, setCrossCookieSupport] = useState(true);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
@@ -22,15 +19,7 @@ function AuthenticationRoute(props) {
       });
     }
 
-    async function checkCrossCookies() {
-      const { supported, timedOut } = await cookieCheck();
-      if (!supported && !timedOut) {
-        setCrossCookieSupport(false);
-      } else {
-        dataFetch();
-      }
-    }
-    checkCrossCookies();
+    dataFetch();
   }, []);
 
   const ChildComponent = props.component;
@@ -41,8 +30,6 @@ function AuthenticationRoute(props) {
     } else {
       return <Redirect to="/" />;
     }
-  } else if (!crossCookieSupport) {
-    return <NoCrossCookies />;
   } else if (isError) {
     return <Error error={isError} />;
   } else {

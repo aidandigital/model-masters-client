@@ -5,7 +5,7 @@ import TinyLoader from "./TinyLoader";
 import Note from '../parts/Note';
 import heic2any from "heic2any";
 
-// Known Bugs: Trying to add the same image twice in a row will do nothing because there is no change detected in the file input (onChange). However, this bug works in our favor
+// Known Bugs: Trying to add the same image twice in a row will do nothing because there is no change detected in the file input (onChange). However, this bug works in our favor.
 // File types Supported: JPEG, JPG, PNG, HEIC, GIF
 // File conversions Supported: HEIC. Will convert to a new JPEG file that can be read as a JPEG and successfully checked for extension and mimetype (as a JPEG) in backend.
 
@@ -125,5 +125,3 @@ const ImagesInput = (props) => {
 }
 
 export default ImagesInput;
-
-/*  disabled={props.maxImages === images.length ? "disabled" : false} */

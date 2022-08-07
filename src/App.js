@@ -88,16 +88,3 @@ const App = () => {
 };
 
 export default App;
-
-/*
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    async function dataFetch() {
-      const res = await axios.get("/api");
-      console.log(res);
-      setData(res.data.message);
-    }
-    dataFetch()
-  }, []);
-  */
