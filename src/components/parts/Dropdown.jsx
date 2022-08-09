@@ -32,7 +32,7 @@ const Dropdown = (props) => {
         )
     } else {
         return (
-            <span {...props} onMouseOver={props.requireClick ? null : openMenu} onClick={props.requireClick ? openMenu : null} onClick={openMenu}><Opener /></span>
+            <span {...props} onMouseOver={props.requireClick ? null : openMenu} onClick={props.requireClick ? openMenu : null}><Opener /></span>
         )
     }
 }

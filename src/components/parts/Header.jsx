@@ -2,15 +2,18 @@ import { useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import logo from "../imgs/logo.png";
 import { Link } from "react-router-dom";
-import { UserCircleIcon, PencilAltIcon, LogoutIcon } from "@heroicons/react/outline"
+import { UserCircleIcon, PencilAltIcon, LogoutIcon, DocumentAddIcon } from "@heroicons/react/outline"
 import Dropdown from "./Dropdown";
 import instance from "../../axiosInstance";
 
 const Header = () => {
   function logout() {
-    instance.get("https://model-masters-api.herokuapp.com/api/logout")
-    .then(() => window.location.reload())
-    .catch(() => alert("An error occured attempting to logout."))
+    const wantsLogout = window.confirm("Are you sure you want to log out?");
+    if (wantsLogout) {
+      instance.get("/api/logout")
+      .then(() => window.location.reload())
+      .catch(() => alert("An error occurred attempting to logout."))
+    }
   }
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,8 +23,8 @@ const Header = () => {
   
   const links = [
     {name: "People", to: "/users"},
-    {name: "How-To", to: "/forum"},
-    {name: "All Models", to: "/models"}
+    {name: "All Models", to: "/models"},
+    {name: "Upload Model", to: "/addModel"},
   ]
 
   const dropdownItems = [
@@ -33,8 +36,8 @@ const Header = () => {
     <UserContext.Consumer>
       {(currentUser) => (
         <header className="bg-primarydark px-3 py-3 md:px-7 md:py-5 flex items-center">
-          <img src={logo} alt="Logo" width="55" loading="lazy" className="inline-block mr-5" />
           <Link to="/" height="20" className="inline-block text-white text-lg md:text-xl tracking-wide">
+            <img src={logo} alt="Logo" width="55" loading="lazy" className="inline-block mr-5" />
             Model Masters
           </Link>
           {/* Medium+ Size Screen Menu */}
