@@ -76,9 +76,9 @@ render() {
             <form className="w-full sm:w-4/5 md:w-3/5 m-auto">
                 <Label>Type of Issue</Label>
                 <div className="rounded-md border my-3" onChange={this.setInput}>
-                    <div><RadioButton name="type" value="error" description="I'm reporting an error/issue that occured" defaultChecked/></div>
-                    <div><RadioButton name="type" value="model" description="I'm reporting an innapropriate model" /></div>
-                    <div><RadioButton name="type" value="user" description="I'm reporting a innapropriate user" /></div>
+                    <div><RadioButton name="type" value="error" description="I'm reporting an error/issue that occurred" defaultChecked/></div>
+                    <div><RadioButton name="type" value="model" description="I'm reporting an inappropriate model" /></div>
+                    <div><RadioButton name="type" value="user" description="I'm reporting a inappropriate user" /></div>
                 </div>
                 {this.state.message.type}
                 <Label>URL of the Issue</Label>
