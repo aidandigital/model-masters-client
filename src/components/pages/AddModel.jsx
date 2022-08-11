@@ -83,7 +83,7 @@ class AddModel extends Component {
 
         instance
           .post("/api/addModel", formData, {
-            // !!! Headers nessecary to transport files, don't touch!
+            // !!! Headers necessary to transport files, don't touch!
             headers: {
               accept: "application/json",
               "Accept-Language": "en-US,en;q=0.8",
@@ -139,7 +139,7 @@ render() {
                             <div className="inline-block"><Label>Fun facts</Label></div>
                             <div className="inline-block ml-1"><Note>(optional)</Note></div>
                             <ParagraphInput name="facts" value={this.state.facts} onChange={this.setInput} placeholder="Are there any interesting facts about this model, mistakes you made, cool stories?" error={this.state.message.facts} />
-                            <Note>Seperate different facts above by hitting enter or return on your keyboard</Note>
+                            <Note>Separate different facts above by hitting enter or return on your keyboard</Note>
                             <Spacer height="3" />
                             <div className={this.state.loading ? "cursor-not-allowed opacity-60" : null}>
                                 <SubmitButton disabled={this.state.loading} /* << Important */ onClick={this.submitForm}>Submit</SubmitButton>

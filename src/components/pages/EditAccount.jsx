@@ -65,28 +65,31 @@ render() {
         <>
         {this.state.complete ? <Header /> : null}
         <Section>
-            <Title>{this.state.complete ? "Update your Account" : "Finish your Account"}</Title>
-            {!this.state.complete ? <p className="text-center mb-10">Your account was approved, just fill out the missing fields!<></></p> : <></>}
+            <Title>{this.state.complete ? "Update your Account" : "About You"}</Title>
+            {!this.state.complete ? <p className="text-center mb-10">Tell others a little about yourself!<></></p> : <></>}
             <form className="w-full sm:w-4/5 md:w-3/5 m-auto">
-            <Label>Bio</Label>
+            <div className="inline-block"><Label>Bio</Label></div>
+            <div className="inline-block ml-1"><Note>(optional)</Note></div>
             <ParagraphInput name="bio" type="text" rows="3" value={this.state.bio} onChange={this.setInput} error={this.state.message.bio} placeholder="Tell us about yourself..." />
             <Label>Model types</Label>
             <TagInput name="types" customStateSetter={this.setTagInput} value={this.state.types} allowedTags={["Cars", "Tanks", "Trains", "Ships", "Trucks"]} error={this.state.message.types} description="What kinds of models do you like?" />
-            <Label>Full Name</Label>
-            <TextInput name="name" type="text" value={this.state.name} onChange={this.setInput} error={this.state.message.name} />
-            <div className="-mt-3">
-                <Note>Only your first name can be seen by other members.</Note>
-            </div>
-            <Label>Email</Label>
-            <TextInput name="email" type="email" value={this.state.email} onChange={this.setInput} error={this.state.message.email}/>
-            <Spacer height="2" />
             {this.state.complete ? (
+            <>
+                <Label>Full Name</Label>
+                <TextInput name="name" type="text" value={this.state.name} onChange={this.setInput} error={this.state.message.name} />
+                <div className="-mt-3">
+                    <Note>Only your first name can be seen by other members.</Note>
+                </div>
+                <Label>Email</Label>
+                <TextInput name="email" type="email" value={this.state.email} onChange={this.setInput} error={this.state.message.email}/>
+                <Spacer height="2" />
                 <div>
                     <Link to={"/user/" + currentUser._id}>
                         <Button>Back to Profile</Button>
                     </Link>
                     <Button type="important" onClick={this.submitForm}>Save</Button>
                 </div>
+            </>
             ) : (
                 <SubmitButton onClick={this.submitForm}>Done</SubmitButton>
             )}
