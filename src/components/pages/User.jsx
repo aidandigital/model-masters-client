@@ -42,12 +42,6 @@ const User = (props) => {
             <div>
               <Subtitle>Bio</Subtitle>
               <p>{props.data.bio ? props.data.bio : `${props.data.name} hasn't published their bio yet...` }</p>
-              {props.data.role === "fan" ?
-                <>
-                  <Subtitle>Garage</Subtitle>
-                  Fan accounts cannot publish models.
-                </>
-              :
                 <>
                   <Subtitle>Garage</Subtitle>
                   {props.data._id === currentUser._id ?
@@ -55,7 +49,7 @@ const User = (props) => {
                     <Link to="/addModel"><Button moreSpacing={true} type="important" icon={DocumentAddIcon}>Publish a Model</Button></Link>
                   </div>
                   : null}
-                  {props.data.models.length > 0 ? <>
+                  {props.data.models && props.data.models.length > 0 ? <>
                     {props.data.models.map((model, i) => (
                      <Column key={i}>
                       <Row>
@@ -71,7 +65,6 @@ const User = (props) => {
                   ))}
                   </> : `${props.data.name} hasn't published any models yet...`}
                 </>
-              }
             </div>
           </Section>
           </div>

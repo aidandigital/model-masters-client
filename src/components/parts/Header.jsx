@@ -36,14 +36,14 @@ const Header = () => {
     <UserContext.Consumer>
       {(currentUser) => (
         <header className="bg-primarydark px-3 py-3 md:px-7 md:py-5 flex items-center">
-          <Link to="/" height="20" className="inline-block text-white text-lg md:text-xl tracking-wide">
+          <Link to="/" height="20" className="hover:opacity-80 duration-200 inline-block text-white text-lg md:text-xl tracking-wide">
             <img src={logo} alt="Logo" width="55" loading="lazy" className="inline-block mr-5" />
             Model Masters
           </Link>
           {/* Medium+ Size Screen Menu */}
           <ul className="ml-auto hidden md:inline-block">
             {links.map((link, i) => (
-              <li key={i} className="inline-block text-white font-serif px-5"><Link to={link.to}>{link.name}</Link></li>
+              <li key={i} className="inline-block hover:opacity-80 duration-200 text-white font-serif px-5"><Link to={link.to}>{link.name}</Link></li>
             ))}
             <Dropdown items={dropdownItems} opener={() => <li className="inline-block text-white font-serif px-5"><Link to={"/user/" + currentUser._id}><UserCircleIcon className="h-6 inline-block mr-2 relative -top-0.5" />{currentUser.firstName}</Link></li>} />
           </ul>

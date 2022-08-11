@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { UserContext } from "../../context/UserContext";
 import TextInput from "../forms/TextInput";
 import ParagraphInput from "../forms/ParagraphInput";
 import RadioButton from "../forms/radioButtons/RadioButton";
@@ -16,6 +17,7 @@ import instance from "../../axiosInstance";
 import Header from "../parts/Header";
 import Footer from "../parts/Footer";
 import TinyLoader from "../forms/TinyLoader";
+import UpgradeRequired from "../errorPages/UpgradeRequired";
 
 class AddModel extends Component {
     constructor(props) {
@@ -103,49 +105,59 @@ class AddModel extends Component {
 
 render() {
     return (
-    <>
-        <Header />
-        <Section>
-            <Title>Publish your Model</Title>
-            <form className="w-full sm:w-4/5 md:w-3/5 m-auto">
-                <Label>Model name</Label>
-                <TextInput name="name" type="text" value={this.state.name} onChange={this.setInput} placeholder="Ex:  68' Dodge Charger" error={this.state.message.name} />
-                <Label>Model type</Label>
-                <div className="rounded-md border my-3" onChange={this.setInput}>
-                    <span className="inline-block w-6/12">
-                        <div><RadioButton name="type" value="Car" description="Car" defaultChecked /></div>
-                        <div><RadioButton name="type" value="Tank" description="Tank" /></div>
-                        <div><RadioButton name="type" value="Truck" description="Truck" /></div>
-                    </span>
-                    <span className="inline-block w-6/12">
-                        <div><RadioButton name="type" value="Ship" description="Ship" /></div>
-                        <div><RadioButton name="type" value="Train" description="Train" /></div>
-                        <div><RadioButton name="type" value="Other" description="Other" /></div>
-                    </span>
-                </div>
-                {this.state.message.type}
-                <Label>About</Label>
-                <ParagraphInput name="about" value={this.state.about} onChange={this.setInput} placeholder="Ex:  What color did you paint the engine? Did you do the trim? What color is the interior?" error={this.state.message.about} />
-                <Label>Approximate completion date</Label>
-                <MonthYearInput monthInputName="completionMonth" monthValue={this.state.completionMonth} yearValue={this.state.completionYear} yearInputName="completionYear" onChange={this.setInput} minYear="1940" defaultYear={new Date().getFullYear()} monthError={this.state.message.completionMonth} yearError={this.state.message.completionYear} />
-                <Label>Photos</Label>
-                <ImagesInput maxImages={10} customStateSetter={this.setImagesInput} value={this.state.images} error={this.state.message.images} />
-                <div className="inline-block"><Label>Fun facts</Label></div>
-                <div className="inline-block ml-1"><Note>(optional)</Note></div>
-                <ParagraphInput name="facts" value={this.state.facts} onChange={this.setInput} placeholder="Are there any interesting facts about this model, mistakes you made, cool stories?" error={this.state.message.facts} />
-                <Note>Seperate different facts above by hitting enter or return on your keyboard</Note>
-                <Spacer height="3" />
-                <div className={this.state.loading ? "cursor-not-allowed opacity-60" : null}>
-                    <SubmitButton disabled={this.state.loading} /* << Important */ onClick={this.submitForm}>Submit</SubmitButton>
-                </div>
-                {this.state.loading ?<div className="inline-block relative top-3 mr-3 ml-2"><TinyLoader /></div> : null}
-                <div className="inline-block"><Note>Submissions could take a few minutes, you will be redirected when done</Note></div>
-                {(this.state.model_id ? <Redirect to={"/model/" + this.state.model_id}/> : <Message isSuccess={false} errType={this.state.errType}>{this.state.message.general}</Message>)}
-            </form>
-            <Spacer />
-        </Section>
-        <Footer />
-    </>
+        <UserContext.Consumer>
+            {(currentUser) => (
+            <>
+            {currentUser.userPermissions > 3 ?
+                <>
+                    <Header />
+                    <Section>
+                        <Title>Publish your Model</Title>
+                        <form className="w-full sm:w-4/5 md:w-3/5 m-auto">
+                            <Label>Model name</Label>
+                            <TextInput name="name" type="text" value={this.state.name} onChange={this.setInput} placeholder="Ex:  68' Dodge Charger" error={this.state.message.name} />
+                            <Label>Model type</Label>
+                            <div className="rounded-md border my-3" onChange={this.setInput}>
+                                <span className="inline-block w-6/12">
+                                    <div><RadioButton name="type" value="Car" description="Car" defaultChecked /></div>
+                                    <div><RadioButton name="type" value="Tank" description="Tank" /></div>
+                                    <div><RadioButton name="type" value="Truck" description="Truck" /></div>
+                                </span>
+                                <span className="inline-block w-6/12">
+                                    <div><RadioButton name="type" value="Ship" description="Ship" /></div>
+                                    <div><RadioButton name="type" value="Train" description="Train" /></div>
+                                    <div><RadioButton name="type" value="Other" description="Other" /></div>
+                                </span>
+                            </div>
+                            {this.state.message.type}
+                            <Label>About</Label>
+                            <ParagraphInput name="about" value={this.state.about} onChange={this.setInput} placeholder="Ex:  What color did you paint the engine? Did you do the trim? What color is the interior?" error={this.state.message.about} />
+                            <Label>Approximate completion date</Label>
+                            <MonthYearInput monthInputName="completionMonth" monthValue={this.state.completionMonth} yearValue={this.state.completionYear} yearInputName="completionYear" onChange={this.setInput} minYear="1940" defaultYear={new Date().getFullYear()} monthError={this.state.message.completionMonth} yearError={this.state.message.completionYear} />
+                            <Label>Photos</Label>
+                            <ImagesInput maxImages={10} customStateSetter={this.setImagesInput} value={this.state.images} error={this.state.message.images} />
+                            <div className="inline-block"><Label>Fun facts</Label></div>
+                            <div className="inline-block ml-1"><Note>(optional)</Note></div>
+                            <ParagraphInput name="facts" value={this.state.facts} onChange={this.setInput} placeholder="Are there any interesting facts about this model, mistakes you made, cool stories?" error={this.state.message.facts} />
+                            <Note>Seperate different facts above by hitting enter or return on your keyboard</Note>
+                            <Spacer height="3" />
+                            <div className={this.state.loading ? "cursor-not-allowed opacity-60" : null}>
+                                <SubmitButton disabled={this.state.loading} /* << Important */ onClick={this.submitForm}>Submit</SubmitButton>
+                            </div>
+                            {this.state.loading ?<div className="inline-block relative top-3 mr-3 ml-2"><TinyLoader /></div> : null}
+                            <div className="inline-block"><Note>Submissions could take a few minutes, you will be redirected when done</Note></div>
+                            {(this.state.model_id ? <Redirect to={"/model/" + this.state.model_id}/> : <Message isSuccess={false} errType={this.state.errType}>{this.state.message.general}</Message>)}
+                        </form>
+                        <Spacer />
+                    </Section>
+                    <Footer />
+                </>
+            :
+            <UpgradeRequired />
+            }
+            </>
+            )}
+        </UserContext.Consumer>
     )
 }
 }

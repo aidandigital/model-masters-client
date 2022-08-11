@@ -21,7 +21,7 @@ const UserRow = (props) => {
         setAjaxRes(data.data)
       })
       .catch(() => {
-        setAjaxRes({success: false, message: "An error occured, try again later"})
+        setAjaxRes({success: false, message: "An error occurred, try again later"})
       });
   }
 
