@@ -3,6 +3,7 @@ import { Redirect, Link } from "react-router-dom";
 import TextInput from "../forms/TextInput";
 import Popup from "../parts/Popup";
 import SubmitButton from "../forms/SubmitButton";
+import Button from "../parts/Button";
 import Message from "../parts/Message";
 import Spacer from "../parts/Spacer";
 import Title from "../parts/Title";
@@ -34,8 +35,20 @@ class Login extends Component {
         ).then((data) => {
             this.setState({ message: data.data.message });
             this.setState({ success: data.data.success });
-        })
-}
+        }).catch(() => {
+            this.setState({success: false, message: {general: "An error occurred, please try again later"}})
+        });
+    }
+
+    loginAsGuest = () => {
+        instance.post('/api/loginAsGuest')
+        .then((data) => {
+            this.setState({ message: data.data.message });
+            this.setState({ success: data.data.success });
+        }).catch(() => {
+            this.setState({success: false, message: {general: "An error occurred, please try again later"}})
+        });
+    }
 
 render() {
     return (
@@ -49,7 +62,14 @@ render() {
                 <TextInput name="password" type="password" value={this.state.password} onChange={this.setInput} placeholder="Password" />
                 {(this.state.success ? <Redirect to="/" /> : <Message isSuccess={false}>{this.state.message}</Message>)}
                 <SubmitButton className="hover:bg-purple-700" onClick={this.submitForm}>Log in</SubmitButton>
-                <div className="text-center"><span>Don't have an account?</span><Link className="p-2 text-primarydark" to="/register">Sign up</Link></div>
+                <div className="text-center my-2">
+                    <div className="inline-block relative bottom-1 mx-2 w-16 md:w-36 h-0.5 bg-black"></div>
+                    or
+                    <div className="inline-block relative bottom-1 mx-2 w-16 md:w-36 h-0.5 bg-black"></div>
+                </div>
+                <Button fullWidth={true} type="outline" onClick={this.loginAsGuest}>Log in as Guest</Button>
+                <Spacer />
+                <div className="text-center"><span>Want an account?</span><Link className="p-2 text-primarydark" to="/register">Sign up here</Link></div>
             </form>
             </div>
             <Spacer />
