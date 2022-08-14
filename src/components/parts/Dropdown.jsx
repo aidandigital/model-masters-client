@@ -16,7 +16,7 @@ const Dropdown = (props) => {
         return (
             <span onMouseLeave={props.requireClick ? null : closeMenu} onClick={props.requireClick ? closeMenu : null}>
             <span {...props}><Opener /></span>
-            <ul className={"absolute z-20 mx-1 right-0 px-4 py-3 rounded-md bg-" + (props.background ? props.background : "primarydark")}>
+            <ul className={"absolute z-20 mx-1 right-2 px-4 py-3 rounded-md bg-" + (props.background ? props.background : "primarydark")}>
             {props.items.map((item, i) => {
                 let Icon;
                 if (item.icon) {

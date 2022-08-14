@@ -25,9 +25,12 @@ const UpgradeRequired = () => {
             <p><bold>It's totally free! We just need to verify your account first:</bold></p>
             <Spacer />
             {!requested ?
-            <Button type="good" icon={BadgeCheckIcon} onClick={requestVerification}>
-                Request verification
-            </Button>
+            <>
+                <Button type="good" icon={BadgeCheckIcon} onClick={requestVerification}>
+                    Request verification
+                </Button>
+                <Button><Link to="/">No thanks</Link></Button>
+            </>
             :
             <div>
                 <Message isSuccess={true}>Your request has been sent! If approved, your account will be automatically upgraded.</Message>

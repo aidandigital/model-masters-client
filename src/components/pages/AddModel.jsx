@@ -18,6 +18,7 @@ import Header from "../parts/Header";
 import Footer from "../parts/Footer";
 import TinyLoader from "../forms/TinyLoader";
 import UpgradeRequired from "../errorPages/UpgradeRequired";
+import AccountRequired from "../errorPages/AccountRequired";
 
 class AddModel extends Component {
     constructor(props) {
@@ -153,8 +154,10 @@ render() {
                     <Footer />
                 </>
             :
-            <UpgradeRequired />
-            }
+                currentUser.guest 
+                ? <AccountRequired />
+                : <UpgradeRequired />
+                }
             </>
             )}
         </UserContext.Consumer>

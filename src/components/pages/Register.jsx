@@ -54,7 +54,7 @@ render() {
             <TextInput name="password" type="password" value={this.state.password} onChange={this.setInput} error={this.state.message.password} placeholder="Password" />
             <Note>Only your first name will be shared with others.</Note>
             <SubmitButton onClick={this.submitForm}>Sign up</SubmitButton>
-            <div className="text-center"><span>Already have an account?</span><Link className="p-2 text-primarydark" to="login">Log in</Link></div>
+            <div className="text-center"><span>Already have an account?</span><Link className="p-2 text-primarydark hover:opacity-80 duration-200" to="login">Log in</Link></div>
         </form>
         <Spacer />
         {this.state.success ? <Redirect to="/home" /> : null}

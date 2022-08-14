@@ -2,7 +2,7 @@ import { useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import logo from "../imgs/logo.png";
 import { Link } from "react-router-dom";
-import { UserCircleIcon, PencilAltIcon, LogoutIcon, DocumentAddIcon } from "@heroicons/react/outline"
+import { UserCircleIcon, LogoutIcon} from "@heroicons/react/outline"
 import Dropdown from "./Dropdown";
 import instance from "../../axiosInstance";
 
@@ -17,20 +17,12 @@ const Header = () => {
   }
 
   const [menuOpen, setMenuOpen] = useState(false);
-  function toggleMenu() {
-    setMenuOpen(!menuOpen)
-  }
   
   const links = [
     {name: "People", to: "/users"},
     {name: "All Models", to: "/models"},
     {name: "Upload Model", to: "/addModel"},
-  ]
-
-  const dropdownItems = [
-    {name: "Edit Account", to: "/editAccount", icon: PencilAltIcon},
-    {name: "Logout", icon: LogoutIcon, onClick: logout}
-  ]
+  ];
 
   return (
     <UserContext.Consumer>
@@ -45,11 +37,23 @@ const Header = () => {
             {links.map((link, i) => (
               <li key={i} className="inline-block hover:opacity-80 duration-200 text-white font-serif px-5"><Link to={link.to}>{link.name}</Link></li>
             ))}
-            <Dropdown items={dropdownItems} opener={() => <li className="inline-block text-white font-serif px-5"><Link to={"/user/" + currentUser._id}><UserCircleIcon className="h-6 inline-block mr-2 relative -top-0.5" />{currentUser.firstName}</Link></li>} />
+            <Dropdown
+            items={[
+              (currentUser.guest ? {} : {name: "My Profile", to: "/user/" + currentUser._id}),
+              {name: "Logout", onClick: logout, icon: LogoutIcon},
+          
+            ]}
+            opener={() => <li className="inline-block text-white font-serif px-5"><Link to={(currentUser.guest ? "/" : "/user/" + currentUser._id)}><UserCircleIcon className="h-6 inline-block mr-2 relative -top-0.5" />{currentUser.firstName}</Link></li>} />
           </ul>
           {/* Small Size Screen Menu */ }
           <span className="inline-block md:hidden ml-auto">
-            <Dropdown requireClick={true} items={[...links, {name: "My Profile", to: "/user/" + currentUser._id}, {name: "Logout", onClick: logout, icon: LogoutIcon}]} opener={() => <li className="inline-block cursor-pointer pl-5 pr-2"><div className="w-10 h-0.5 bg-white mt-1.5"></div><div className="w-10 h-0.5 bg-white mt-1.5"></div><div className="w-10 h-0.5 bg-white mt-1.5"></div></li>} />
+            <Dropdown requireClick={true}
+            items={[
+              ...links,
+              (currentUser.guest ? {} : {name: "My Profile", to: "/user/" + currentUser._id}),
+              {name: "Logout", onClick: logout, icon: LogoutIcon},
+            ]}
+            opener={() => <li className="inline-block cursor-pointer pl-5 pr-2"><div className="w-10 h-0.5 bg-white mt-1.5"></div><div className="w-10 h-0.5 bg-white mt-1.5"></div><div className="w-10 h-0.5 bg-white mt-1.5"></div></li>} />
           </span>
         </header>
       )}

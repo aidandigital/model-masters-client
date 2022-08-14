@@ -40,8 +40,9 @@ class Login extends Component {
         });
     }
 
-    loginAsGuest = () => {
-        instance.post('/api/loginAsGuest')
+    loginAsGuest = (e) => {
+        e.preventDefault();
+        instance.post('/api/loginAsGuest', {})
         .then((data) => {
             this.setState({ message: data.data.message });
             this.setState({ success: data.data.success });
@@ -63,13 +64,13 @@ render() {
                 {(this.state.success ? <Redirect to="/" /> : <Message isSuccess={false}>{this.state.message}</Message>)}
                 <SubmitButton className="hover:bg-purple-700" onClick={this.submitForm}>Log in</SubmitButton>
                 <div className="text-center my-2">
-                    <div className="inline-block relative bottom-1 mx-2 w-16 md:w-36 h-0.5 bg-black"></div>
+                    <div className="inline-block relative bottom-1 mx-2 w-16 lg:w-28 h-0.5 bg-black"></div>
                     or
-                    <div className="inline-block relative bottom-1 mx-2 w-16 md:w-36 h-0.5 bg-black"></div>
+                    <div className="inline-block relative bottom-1 mx-2 w-16 lg:w-28 h-0.5 bg-black"></div>
                 </div>
                 <Button fullWidth={true} type="outline" onClick={this.loginAsGuest}>Log in as Guest</Button>
                 <Spacer />
-                <div className="text-center"><span>Want an account?</span><Link className="p-2 text-primarydark" to="/register">Sign up here</Link></div>
+                <div className="text-center"><span>Want an account?</span><Link className="p-2 text-primarydark hover:opacity-80 duration-200" to="/register">Sign up here</Link></div>
             </form>
             </div>
             <Spacer />

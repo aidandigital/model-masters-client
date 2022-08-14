@@ -19,7 +19,6 @@ function PrivateRoute(props) {
             setRes(data.data);
         })
         .catch((error) => {
-          console.log(error)
           setIsError(error);
         });
     }
