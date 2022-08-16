@@ -1,5 +1,9 @@
+/* Import Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
+
+/* Import AD Icon */
+@import url('https://cdn.aidandigital.com/ad-icon/css/fontello-embedded.css');
 
 @tailwind base;
 @tailwind components;
