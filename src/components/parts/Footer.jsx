@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ExclamationCircleIcon } from "@heroicons/react/outline";
 
 const Footer = () => {
-  const repoUrl = process.env.REPO_URL;
+  const repoUrl = process.env.REACT_APP_REPO_URL;
 
   return (
     <footer className="bg-secondarylight px-3 py-3 md:px-7 md:py-5 items-center">
