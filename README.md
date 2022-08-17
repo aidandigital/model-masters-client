@@ -1,7 +1,7 @@
 # Model Masters
 
 ## Description
-Model Masters is a site for car and vehicle model enthusiasts to share their creations. Users can sign up, or log in as a guest in order to view posts made by other users in a fashion similar to social media sites. Verified users are permitted to upload their models along with up to 8 photos, a description, and more.
+A site for car and vehicle model enthusiasts to share their creations. Users can sign up, or log in as a guest in order to view posts made by other users in a fashion similar to social media sites. Verified users are permitted to upload their models along with up to 8 photos, a description, and more.
 
 ## Tech used
 ### Frontend:
