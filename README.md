@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Model Masters
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+Model Masters is a site for car and vehicle model enthusiasts to share their creations. Users can sign up, or log in as a guest in order to view posts made by other users in a fashion similar to social media sites. Verified users are permitted to upload their models along with up to 8 photos, a description, and more.
 
-## Available Scripts
+## Tech used
+### Frontend:
+* React
+* React Router
+* AJAX / API Consumption
+* Tailwind CSS
+### Backend:
+* Node.js®
+* Express.js
+* MongoDB®
+* Passport.js
+* Mongoose
+* Cloudinary
+* Multer
 
-In the project directory, you can run:
+## Features
+### Frontend:
+* Login / Register UI, with the ability to log back in on any page without losing progress on said page.
+* Profile editing dashboard with custom "tags" input component.
+* Complex image upload component that allows users to add, preview, and delete up to 8 images. Also automatically converts HEIC images to JPEG.
+* Admin dashboard that allows authorized members to upgrade, demote, or disable users' accounts.
+* Personalized Header and Pages based on user permissions.
+### Backend:
+* HTTP API
+* Authentication and Authorization
+* Database schemas and controllers for CRUD operations.
+* Form validation and NoSQL injection sanitation.
+* File upload middleware that supported multiple images at once, validated for type and mimetype, and interpreted/validated JSON data attached to the same request. Valid files were then transferred automatically from the local FS to Cloudinary.
 
-### `npm start`
+## Backend Code
+The backend code for this app is located in a private repo for security reasons. If you are a developer or recruiter and wish to view it, please request so here: https://aidandigital.com/backend-hidden
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## License & Notice
+Copyright (c) 2022 Aidan Digital
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
 
-### `npm test`
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
