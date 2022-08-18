@@ -30,7 +30,7 @@ A site for car and vehicle model enthusiasts to share their creations. Users can
 * Authentication and Authorization
 * Database schemas and controllers for CRUD operations.
 * Form validation and NoSQL injection sanitation.
-* File upload middleware that supported multiple images at once, validated for type and mimetype, and interpreted/validated JSON data attached to the same request. Valid files were then transferred automatically from the local FS to Cloudinary.
+* File upload middleware that supports multiple images at once, validates for type and mimetype, and interprets/validates JSON data attached to the same request. Valid files are then transferred automatically from the local FS to Cloudinary.
 
 ## Backend Code
 The backend code for this app is located in a private repo for security reasons. If you are a developer or recruiter and wish to view it, please request so here: https://aidandigital.com/backend-hidden
