@@ -28,7 +28,7 @@ A site for car and vehicle model enthusiasts to share their creations. Users can
 ### Backend:
 * HTTP API
 * Authentication and Authorization
-* Database schemas and controllers for CRUD operations.
+* Database schemas, controllers, and aggregation pipelines for CRUD operations.
 * Form validation and NoSQL injection sanitation.
 * File upload middleware that supports multiple images at once, validates for type and mimetype, and interprets/validates JSON data attached to the same request. Valid files are then transferred automatically from the local FS to Cloudinary.
 
