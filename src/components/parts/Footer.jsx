@@ -32,7 +32,7 @@ const Footer = () => {
         <div className="items-center hidden md:inline-flex">
           <a href={repoUrl}>
             <img className="h-6 inline-block" src="https://cdn.aidandigital.com/tech-logos/github-2.svg" />
-            <p className="inline-block mx-2 relative top-0.5">Github Repo</p>
+            <p className="inline-block mx-2 relative top-0.5">View Repo</p>
           </a>
         </div>
       </div>
