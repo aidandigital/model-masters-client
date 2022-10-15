@@ -25,10 +25,8 @@ const Home = (props) => {
           <Section background="secondarybackground">
             <Title color="black">About</Title>
             <p className="text-lg leading-8">
-              Model Masters is a site for car and vehicle model enthusiasts to share their creations. When you sign up, you start with a "fan" account. Fans can only view models. "Member" accounts can upload models; you can become a member by visiting the page "Upload Model" in the header. Some particularly achieved users have been awarded a "model master" account, although this grants them no extra permissions. You can browse everyone's models by going to the page "All Models" or an individual's models by going to the "Garage" section under their profile.
+              {props.data.about}
             </p>
-            <Title color="black">History</Title>
-            <p className="text-lg leading-8">{props.data.about}</p>
             <Spacer />
           </Section>
           <Footer />
