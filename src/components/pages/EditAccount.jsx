@@ -14,6 +14,7 @@ import Section from "../parts/Section";
 import Button from "../parts/Button";
 import instance from "../../axiosInstance";
 import Header from "../parts/Header";
+import { KeyIcon, EyeIcon, EyeOffIcon } from "@heroicons/react/outline";
 
 class Register extends Component {
     constructor(props) {
@@ -27,6 +28,7 @@ class Register extends Component {
             message: {},
             errType: '',
             success: false,
+            showIps: false,
         }
     }
 
@@ -58,6 +60,10 @@ class Register extends Component {
         });;
     }
 
+    toggleIps = () => {
+        this.setState({ showIps: !this.state.showIps });
+    }
+
 render() {
     return (
         <UserContext.Consumer>
@@ -65,7 +71,7 @@ render() {
         <>
         {this.state.complete ? <Header /> : null}
         <Section>
-            <Title>{this.state.complete ? "Update your Account" : "About You"}</Title>
+            <Title>{this.state.complete ? "Account Info" : "About You"}</Title>
             {!this.state.complete ? <p className="text-center mb-10">Tell others a little about yourself!<></></p> : <></>}
             <form className="w-full sm:w-4/5 md:w-3/5 m-auto">
             <div className="inline-block"><Label>Bio</Label></div>
@@ -85,7 +91,7 @@ render() {
                 <Spacer height="2" />
                 <div>
                     <Link to={"/user/" + currentUser._id}>
-                        <Button>Back to Profile</Button>
+                        <Button type="outline">Back to Profile</Button>
                     </Link>
                     <Button type="important" onClick={this.submitForm}>Save</Button>
                 </div>
@@ -98,6 +104,28 @@ render() {
         </form>
         {this.state.success ? <Redirect to={"/user/" + currentUser._id} /> : null}
         </Section>
+        <Section>
+            <Title>Security</Title>
+            <div className="w-full sm:w-4/5 md:w-3/5 m-auto text-center">
+                <Link to="/editPassword">
+                    <Button type="outline" icon={KeyIcon}>Change Password</Button>
+                </Link>
+                {this.state.showIps ? (
+                    <>
+                        <Button type="outline" icon={EyeOffIcon} onClick={this.toggleIps}>Hide IP Addresses</Button>
+                        <div className="my-5">
+                            These IP addresses have been used to log into your account:
+                            {this.props.data.ips.map((ip, i) => (
+                                <div key={i} className="bg-secondarylight rounded my-1">{ip}</div>
+                            ))}
+                        </div>
+                    </>
+                ) : (
+                    <Button type="outline" icon={EyeIcon} onClick={this.toggleIps}>View IP Addresses</Button>
+                )}
+            </div>
+        </Section>
+        <Spacer />
         </>
       )}
       </UserContext.Consumer>

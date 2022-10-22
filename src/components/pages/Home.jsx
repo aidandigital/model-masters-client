@@ -5,6 +5,7 @@ import FrontPageImage from "../imgs/frontPageImage.jpeg";
 import Section from "../parts/Section";
 import Spacer from "../parts/Spacer";
 import Title from "../parts/Title";
+import Feed from "../feed/Feed";
 
 const Home = (props) => {
   return (
@@ -22,6 +23,10 @@ const Home = (props) => {
           <div className="block md:hidden text-center w-full bg-secondarydark p-3">
             <span className="w-full text-3xl text-white font-bold py-1 leading-snug px-3 bg-opacity-50">Welcome, {currentUser.firstName}!</span>
           </div>
+          <Section background="secondarybackground">
+            <Title color="black">Latest Models</Title>
+            <Feed models={props.data.models} showAuthor={true} />
+          </Section>
           <Section background="secondarybackground">
             <Title color="black">About</Title>
             <p className="text-lg leading-8">

@@ -9,15 +9,16 @@ import Spacer from "../parts/Spacer";
 import instance from "../../axiosInstance";
 import Header from "../parts/Header";
 import Footer from "../parts/Footer";
+import { Link } from "react-router-dom";
+import Button from "../parts/Button";
 
-class AddModel extends Component {
+class EditPassword extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            model_id: props.data.model_id,
-            reason: "",
             message: {},
-            password: "",
+            oldPassword: "",
+            newPassword: "",
             success: false,
             errType: "",
         }
@@ -31,11 +32,10 @@ class AddModel extends Component {
 
         e.preventDefault();
 
-            instance.post('/api/deleteModel',
+            instance.post('/api/updatePassword',
                 {
-                    model_id: this.state.model_id,
-                    reason: this.state.reason,
-                    password: this.state.password,
+                    oldPassword: this.state.oldPassword,
+                    newPassword: this.state.newPassword,
                 }
             ).then((data) => {
                 if (!data.data.success) {
@@ -55,8 +55,15 @@ render() {
       <>
       <Header />
         <Section fullHeight={true}>
-          <Title>Successfully Deleted</Title>
-          <p className="text-center">We are sorry to see your model go!</p>
+          <Title>Successfully Changed</Title>
+          <p className="text-center">
+            Your password has been changed.
+            <br />
+            <br />
+            <Link to="/">
+                <Button type="outline">Okay</Button>
+            </Link>
+        </p>
         </Section>
         <Footer />
       </>
@@ -64,12 +71,14 @@ render() {
       <>
         <Header />
         <Section fullHeight={true}>
-            <Title>Delete a Model</Title>
+            <Title>Change your Password</Title>
             <form className="w-full sm:w-4/5 md:w-3/5 m-auto">
-                <Label>Password</Label>
-                <TextInput name="password" type="password" onChange={this.setInput} value={this.state.password} error={this.state.message.password} placeholder="Enter your password to verify this" />
+                <Label>Current Password</Label>
+                <TextInput name="oldPassword" type="password" onChange={this.setInput} value={this.state.oldPassword} error={this.state.message.oldPassword} placeholder="Enter your current password" />
+                <Label>New Password</Label>
+                <TextInput name="newPassword" type="password" onChange={this.setInput} value={this.state.newPassword} error={this.state.message.newPassword} placeholder="Enter what you want your new password to be" />
                 <Spacer height="3" />
-                <SubmitButton onClick={this.submitForm}>Delete forever</SubmitButton>
+                <SubmitButton onClick={this.submitForm}>Save</SubmitButton>
                 {(this.state.success ? null : <Message isSuccess={false} errType={this.state.errType}>{this.state.message.general}</Message>)}
             </form>
             <Spacer />
@@ -82,4 +91,4 @@ render() {
 }
 }
 
-export default AddModel;
+export default EditPassword;

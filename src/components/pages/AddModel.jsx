@@ -26,7 +26,7 @@ class AddModel extends Component {
         this.state = {
             name: "",
             completionMonth: "September",
-            completionYear: "2020",
+            completionYear: "2022",
             facts: "",
             about: "",
             type: "Car",
@@ -146,7 +146,7 @@ render() {
                                 <SubmitButton disabled={this.state.loading} /* << Important */ onClick={this.submitForm}>Submit</SubmitButton>
                             </div>
                             {this.state.loading ?<div className="inline-block relative top-3 mr-3 ml-2"><TinyLoader /></div> : null}
-                            <div className="inline-block"><Note>Submissions could take a few minutes, you will be redirected when done</Note></div>
+                            <div className="inline-block"><Note>Submissions could take a few minutes, you will be redirected once done</Note></div>
                             {(this.state.model_id ? <Redirect to={"/model/" + this.state.model_id}/> : <Message isSuccess={false} errType={this.state.errType}>{this.state.message.general}</Message>)}
                         </form>
                         <Spacer />

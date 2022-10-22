@@ -37,7 +37,13 @@ const Footer = () => {
         </div>
       </div>
       <div className="text-center mt-5 md:mt-0">
-        <p className="text-center text-xs">&copy; {new Date().getFullYear()} Aidan Digital. All rights reserved.</p>
+        <p className="text-center text-xs">
+          <span>&copy; {new Date().getFullYear()}</span>
+          <span> Aidan Digital. All rights reserved. </span>
+          <a href={"https://aidandigital.com/contact?ref=" + window.location.href + "&body=I wish to have my data associated with the email above in the Model Masters database deleted permanently. I understand that you will first have to verify my identity via email before making any changes to my data, and that if I no longer have access to the email associated with my data, I do not respond within 48 hours, or I provide the wrong email, you will not be able to make any changes to my data."}>
+            Manage your Data
+          </a>
+        </p>
       </div>
     </footer>
   );

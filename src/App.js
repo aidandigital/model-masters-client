@@ -22,6 +22,7 @@ import Model from "./components/pages/Model";
 import DeleteModel from "./components/pages/DeleteModel";
 import Models from "./components/pages/Models";
 import ReportIssue from "./components/pages/ReportIssue";
+import EditPassword from "./components/pages/EditPassword";
 
 const App = () => {
   function generateKey() {
@@ -34,7 +35,7 @@ const App = () => {
     <Router>
       <Switch>
         <Route path={["/", "/home"]} exact key={generateKey()}>
-          <PrivateRoute component={Home} apiRoute="/html/about" />
+          <PrivateRoute component={Home} apiRoute="/html/models/true" />
         </Route>
         <Route path="/login" exact>
           <AuthenticationRoute component={Login} />
@@ -53,9 +54,6 @@ const App = () => {
         <Route path="/editAccount" exact key={generateKey()}>
           <PrivateRoute component={EditAccount} apiRoute={"/html/editAccount"} />
         </Route>
-        <Route path="/forum" exact>
-          <ComingSoon />
-        </Route>
         <Route path="/addModel" exact>
           <PrivateRoute component={AddModel} apiRoute={"/html/addModel"} />
         </Route>
@@ -65,15 +63,19 @@ const App = () => {
         <Route path="/deleteModel/:_id" exact key={generateKey()}>
           {() => <PrivateRoute component={DeleteModel} apiRoute={"/html" + window.location.pathname} />}
         </Route>
+        <Route path="/editPassword" exact key={generateKey()}>
+          {() => <PrivateRoute component={EditPassword} apiRoute="/html/justUserInfo" />}
+        </Route>
         <Route path="/models" exact key={generateKey()}>
-          <PrivateRoute component={Models} apiRoute="/html/models" />
+          <PrivateRoute component={Models} apiRoute="/html/models/false" />
         </Route>
         <Route path="/reportIssue" exact key={generateKey()}>
-          {() => <PrivateRoute component={ReportIssue} apiRoute="/html/reportIssue" />}
+          {() => <PrivateRoute component={ReportIssue} apiRoute="/html/justUserInfo" />}
         </Route>
         <Route path="/404" exact>
           <NotFound />
         </Route>
+        {/*
         <Route path="/test" exact>
           {() => (
             <form>
@@ -81,6 +83,7 @@ const App = () => {
             </form>
           )}
         </Route>
+        */}
         <Route component={NotFound} />
       </Switch>
     </Router>

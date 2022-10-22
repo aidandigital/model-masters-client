@@ -13,8 +13,10 @@ import Image from "../parts/Image";
 import Header from "../parts/Header";
 import Footer from "../parts/Footer";
 import RoleParser from "../parts/RoleParser";
+import Feed from "../feed/Feed";
 
 const User = (props) => {
+  console.log(props.data);
   return (
     <UserContext.Consumer>
       {(currentUser) => (
@@ -29,7 +31,7 @@ const User = (props) => {
               </span>
             </div>
             <div className="inline-block m-auto md:mx-4 lg:mx-6">
-              {props.data._id === currentUser._id ? <Link to="/editAccount"><Button moreSpacing={true} icon={PencilAltIcon}>Edit account</Button></Link> : null}
+              {props.data._id === currentUser._id ? <Link to="/editAccount"><Button moreSpacing={true} icon={PencilAltIcon}>Edit profile</Button></Link> : null}
               <Button moreSpacing={true} icon={LinkIcon} onClick={() => {navigator.clipboard.writeText(window.location.href);alert("Link copied to clipboard. (Must be logged in to view)")}}>Copy profile link</Button>
             </div>
           </Section>
@@ -50,19 +52,7 @@ const User = (props) => {
                   </div>
                   : null}
                   {props.data.models && props.data.models.length > 0 ? <>
-                    {props.data.models.map((model, i) => (
-                     <Column key={i}>
-                      <Row>
-                        <div className="text-center mb-1">
-                          <Link to={"/model/" + model._id}>
-                            <Image src={model.thumbnail} isThumbnail={true} />
-                            <p className="mt-5 font-bold mb-3 text-xl font-serif hover:text-primarydark duration-200">{model.name}</p>
-                          </Link>
-                          {model.type}
-                        </div>
-                      </Row>
-                    </Column>
-                  ))}
+                    <Feed models={props.data.models} />
                   </> : `${props.data.name} hasn't published any models yet...`}
                 </>
             </div>

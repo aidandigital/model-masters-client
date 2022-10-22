@@ -2,7 +2,7 @@ import { useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import logo from "../imgs/logo.png";
 import { Link } from "react-router-dom";
-import { UserCircleIcon, LogoutIcon} from "@heroicons/react/outline"
+import { UserCircleIcon, LogoutIcon } from "@heroicons/react/outline"
 import Dropdown from "./Dropdown";
 import instance from "../../axiosInstance";
 
@@ -39,7 +39,8 @@ const Header = () => {
             ))}
             <Dropdown
             items={[
-              (currentUser.guest ? {} : {name: "My Profile", to: "/user/" + currentUser._id}),
+              (currentUser.guest ? {} : {name: "Profile", to: "/user/" + currentUser._id}),
+              (currentUser.guest ? {} : {name: "Settings", to: "/editAccount"}),
               {name: "Logout", onClick: logout, icon: LogoutIcon},
           
             ]}
