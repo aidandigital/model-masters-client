@@ -6,6 +6,8 @@ import Section from "../parts/Section";
 import Spacer from "../parts/Spacer";
 import Title from "../parts/Title";
 import Feed from "../feed/Feed";
+import Button from "../parts/Button";
+import { Link } from "react-router-dom";
 
 const Home = (props) => {
   return (
@@ -26,6 +28,9 @@ const Home = (props) => {
           <Section background="secondarybackground">
             <Title color="black">Latest Models</Title>
             <Feed models={props.data.models} showAuthor={true} />
+            <div className="text-center">
+              <Link to="/models"><Button type="outline">View all Models</Button></Link>
+            </div>
           </Section>
           <Section background="secondarybackground">
             <Title color="black">About</Title>
