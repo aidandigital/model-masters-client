@@ -100,7 +100,7 @@ class AddModel extends Component {
             }
         }).catch(() => {
             this.setState({loading: false})
-            this.setState({success: false, message: {general: "An error occured, try again later"}})
+            this.setState({success: false, message: {general: "An error occurred, try again later"}})
         });;
     }
 
@@ -143,7 +143,7 @@ render() {
                             <Note>Separate different facts above by hitting enter or return on your keyboard</Note>
                             <Spacer height="3" />
                             <div className={this.state.loading ? "cursor-not-allowed opacity-60" : null}>
-                                <SubmitButton disabled={this.state.loading} /* << Important */ onClick={this.submitForm}>Submit</SubmitButton>
+                                <SubmitButton disabled={this.state.loading} /* << Important */ onClick={this.submitForm}>Publish</SubmitButton>
                             </div>
                             {this.state.loading ?<div className="inline-block relative top-3 mr-3 ml-2"><TinyLoader /></div> : null}
                             <div className="inline-block"><Note>Submissions could take a few minutes, you will be redirected once done</Note></div>

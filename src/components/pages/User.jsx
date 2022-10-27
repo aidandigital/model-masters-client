@@ -16,7 +16,6 @@ import RoleParser from "../parts/RoleParser";
 import Feed from "../feed/Feed";
 
 const User = (props) => {
-  console.log(props.data);
   return (
     <UserContext.Consumer>
       {(currentUser) => (

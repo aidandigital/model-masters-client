@@ -11,16 +11,19 @@ import Spacer from "../parts/Spacer";
 import Note from "../parts/Note";
 import TinyLoader from "../forms/TinyLoader";
 import instance from "../../axiosInstance";
-import Header from "../parts/Header";
+import AltHeader from "../parts/AltHeader";
 import Footer from "../parts/Footer";
+import Button from "../parts/Button";
+import { Link } from "react-router-dom";
+import { HomeIcon } from "@heroicons/react/outline";
 
 class ReportIssue extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            url: "",
+            url: props.match.params.model_id ? "model/" + props.match.params.model_id : "",
             description: "",
-            type: "error",
+            type: props.match.params.model_id ? "model" : "error",
             loading: false,
             message: {},
             success: false,
@@ -53,31 +56,34 @@ class ReportIssue extends Component {
                 }
             }).catch(() => {
                 this.setState({loading: false})
-                this.setState({success: false, message: {general: "An error occured, try again later"}})
+                this.setState({success: false, message: {general: "An error occurred, please try again later"}})
             });;
     }
-
+    
 render() {
     return (
     <>
       {this.state.success ?
       <>
-      <Header />
+      {/* Stateless header: */}
+      <AltHeader />
         <Section>
           <Title>Issue Successfully Reported</Title>
           <p className="text-center">Thank you for taking the time to make Model Masters better!</p>
+          <Spacer />
+          <Button icon={HomeIcon}><Link to="/">Back to Home</Link></Button>
         </Section>
       </>
       :
       <>
-        <Header />
+        <AltHeader />
         <Section>
             <Title>File a Report</Title>
             <form className="w-full sm:w-4/5 md:w-3/5 m-auto">
                 <Label>Type of Issue</Label>
                 <div className="rounded-md border my-3" onChange={this.setInput}>
-                    <div><RadioButton name="type" value="error" description="I'm reporting an error/issue that occurred" defaultChecked/></div>
-                    <div><RadioButton name="type" value="model" description="I'm reporting an inappropriate model" /></div>
+                    <div><RadioButton name="type" value="error" description="I'm reporting an error/issue that occurred" defaultChecked={this.state.type === "error" ? true : false} /></div>
+                    <div><RadioButton name="type" value="model" description="I'm reporting an inappropriate model" defaultChecked={this.state.type === "model" ? true : false} /></div>
                     <div><RadioButton name="type" value="user" description="I'm reporting a inappropriate user" /></div>
                 </div>
                 {this.state.message.type}

@@ -56,7 +56,7 @@ class Register extends Component {
                 this.setState({ success: true });
             }
         }).catch(() => {
-            this.setState({success: false, message: {general: "An error occured, try again later"}})
+            this.setState({success: false, message: {general: "An error occurred, try again later"}})
         });;
     }
 

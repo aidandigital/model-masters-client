@@ -69,9 +69,7 @@ const App = () => {
         <Route path="/models" exact key={generateKey()}>
           <PrivateRoute component={Models} apiRoute="/html/models/false" />
         </Route>
-        <Route path="/reportIssue" exact key={generateKey()}>
-          {() => <PrivateRoute component={ReportIssue} apiRoute="/html/justUserInfo" />}
-        </Route>
+        <Route path={["/reportIssue/:model_id", "/reportIssue"]} component={ReportIssue} exact key={generateKey()} />
         <Route path="/404" exact>
           <NotFound />
         </Route>

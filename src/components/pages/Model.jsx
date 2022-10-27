@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import SmallTitle from "../parts/SmallTitle";
 import Subtitle from "../parts/Subtitle";
 import ImageSlider from "../parts/ImageSlider";
-import { LinkIcon, TrashIcon } from "@heroicons/react/outline";
+import { LinkIcon, TrashIcon, ExclamationCircleIcon } from "@heroicons/react/outline";
 import Spacer from "../parts/Spacer";
 import Header from "../parts/Header";
 import Footer from "../parts/Footer";
@@ -38,7 +38,11 @@ const Model = (props) => {
                 <>
                     <Link to={"/deleteModel/" + props.data._id}><Button moreSpacing={true} icon={TrashIcon}>Delete</Button></Link> 
                 </>
-              : null}
+              : 
+                <Button moreSpacing={true} icon={ExclamationCircleIcon}>
+                  <Link to={"/reportIssue/" + props.data._id}>Report</Link>
+                </Button>
+              }
             </div>
           </Section>
           <Section>
