@@ -18,15 +18,17 @@ const Users = (props) => {
   const [searchError, setSearchError] = useState(null); // "not found"
 
   function search(e) {
-    const search = e.target.value;
-    setSearchText(search);
+    setSearchText(e.target.value);
+    const searchRgx = /([^A-z0-9\s])+/g;
+    const search = e.target.value.replace(searchRgx, "").toLowerCase().trim();
+    // ^ Make searching easier by filtering things down to just letters, numbers, and spaces.
 
     const newGroups = {};
     const newGroupNames = [];
     for (const group in userGroups) {
       const newUsers = [];
       for (const user of userGroups[group]) {
-        if (user.name.includes(search)) {
+        if (user.name.replace(searchRgx, "").toLowerCase().includes(search)) {
           newUsers.push(user);
         }
       }
