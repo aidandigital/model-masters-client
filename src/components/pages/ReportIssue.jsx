@@ -71,7 +71,7 @@ render() {
           <Title>Issue Successfully Reported</Title>
           <p className="text-center">Thank you for taking the time to make Model Masters better!</p>
           <Spacer />
-          <Button icon={HomeIcon}><Link to="/">Back to Home</Link></Button>
+          <div className="text-center"><Button icon={HomeIcon}><Link to="/">Back to Home</Link></Button></div>
         </Section>
       </>
       :
