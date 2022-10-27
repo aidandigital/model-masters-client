@@ -68,7 +68,7 @@ render() {
       {/* Stateless header: */}
       <AltHeader />
         <Section>
-          <Title>Issue Successfully Reported</Title>
+          <Title>Successfully Reported</Title>
           <p className="text-center">Thank you for taking the time to make Model Masters better!</p>
           <Spacer />
           <div className="text-center"><Button icon={HomeIcon}><Link to="/">Back to Home</Link></Button></div>
