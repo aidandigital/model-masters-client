@@ -115,8 +115,13 @@ render() {
                         <Button type="outline" icon={EyeOffIcon} onClick={this.toggleIps}>Hide IP Addresses</Button>
                         <div className="my-5">
                             These IP addresses have been used to log into your account:
-                            {this.props.data.ips.map((ip, i) => (
-                                <div key={i} className="bg-secondarylight rounded my-1">{ip}</div>
+                            {this.props.data.ips.map((item, i) => (
+                                <div key={i} className="bg-secondarylight rounded my-1"><span className="underline">{item.ip}</span>
+                                {item.loginDates.map(date => {
+                                    const dateObj = new Date(date);
+                                    return <div>{dateObj.toLocaleString("en-US", {timeZoneName: "short"})}</div>
+                                })}
+                                </div>
                             ))}
                         </div>
                     </>

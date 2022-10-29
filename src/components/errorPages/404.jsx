@@ -7,10 +7,10 @@ import { HomeIcon } from "@heroicons/react/solid";
 
 const NotFound = () =>
     <div className="text-center">
-        <Title>404: Page Not Found</Title>
+        <Title>404: Page not Found</Title>
         <ul class="list-inside list-disc ml-6">
-            <li>Make sure your link in the searchbar isn't broken</li>
-            <li>Make sure you are logged in</li>
+            <li>Make sure your link in the search bar isn't broken.</li>
+            <li>Make sure you are logged in.</li>
             <li>Keep in mind this page may just be temporarily down.</li>
         </ul>
         <Spacer />

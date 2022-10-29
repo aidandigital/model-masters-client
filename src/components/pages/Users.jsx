@@ -52,7 +52,7 @@ const Users = (props) => {
       <Header />
       <Section fullHeight={true}>
         <Title color="black">All Users</Title>
-        <TextInput placeholder="Enter the name of a user to search..." value={searchText} onChange={search} error={searchError} />
+        <TextInput placeholder="Enter the name of a user to search..." value={searchText} onChange={search} autofocus="autofocus" />
         {actualUserGroupNames.map((groupName) => (
           <>
           <Subtitle>
