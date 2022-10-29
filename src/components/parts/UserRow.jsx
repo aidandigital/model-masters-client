@@ -4,7 +4,7 @@ import UserLink from "./UserLink";
 import Row from "./Row";
 import Button from "./Button";
 import Confirm from "./Confirm";
-import { BanIcon, CheckCircleIcon, UserAddIcon, UserRemoveIcon } from "@heroicons/react/outline";
+import { LockClosedIcon, LockOpenIcon, UserAddIcon, UserRemoveIcon } from "@heroicons/react/outline";
 import Message from "./Message";
 import UserMeta from "./UserMeta";
 import RoleParser from "./RoleParser";
@@ -25,8 +25,8 @@ const UserRow = (props) => {
       });
   }
 
-  const decoySetPendingButton = () => <Button type="warning" icon={BanIcon}>Disapprove</Button>;
-  const liveSetPendingButton = () => <Button onClick={submitForm} type="warning" value="setPending">Disapprove</Button>;
+  const decoySetPendingButton = () => <Button type="warning" icon={LockClosedIcon}>Lock</Button>;
+  const liveSetPendingButton = () => <Button onClick={submitForm} type="warning" value="setPending">Lock account</Button>;
   
   return (
     <UserContext.Consumer>
@@ -45,8 +45,8 @@ const UserRow = (props) => {
               <UserMeta>{props.user.email}</UserMeta>
               <div className="mt-2.5 md:mt-0 md:text-right md:float-right">
                 {(props.user.pending ?
-                <Button onClick={submitForm} type="good" icon={CheckCircleIcon} value="setPending">
-                  Approve
+                <Button onClick={submitForm} type="good" icon={LockOpenIcon} value="setPending">
+                  Unlock
                 </Button>
                 :
                 <Confirm
