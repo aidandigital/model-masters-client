@@ -104,6 +104,7 @@ render() {
         </form>
         {this.state.success ? <Redirect to={"/user/" + currentUser._id} /> : null}
         </Section>
+        {this.state.complete ? (
         <Section>
             <Title>Security</Title>
             <div className="w-full sm:w-4/5 md:w-3/5 m-auto text-center">
@@ -130,6 +131,7 @@ render() {
                 )}
             </div>
         </Section>
+        ) : null}
         <Spacer />
         </>
       )}
