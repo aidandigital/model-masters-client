@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#a61c00" />
+    <meta
+      name="description"
+      content="Platform for car and vehicle model enthusiasts to share their creations."
+    />
+    <link rel="apple-touch-icon" href="" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="" />
+    <link href="/src/index.css" rel="stylesheet" />
+    <title>Model Masters</title>
+  </head>
+  <body>
+    <noscript>
+      <style>
+        .noscript-container {
+          text-align: center;
+          margin: 10px;
+          font-family: Sans-Serif;
+        }
+
+        .noscript-button {
+          padding: 10px 15px;
+          font-size: 1em;
+          background-color: rgb(9, 154, 9);
+          color: white;
+          border: none;
+          border-radius: 2px;
+        }
+
+        .noscript-clickable {
+          transition-duration: 300ms;
+        }
+
+        .noscript-clickable:hover {
+          cursor: pointer;
+          opacity: .85;
+          transition-duration: 300ms;
+        }
+
+        .noscript-p {
+          padding: 4px;
+          line-height: 22px;
+        }
+      </style>
+      <div class="noscript-container">
+        <br />
+        <h2>You must enable JavaScript to use this website.</h2>
+        <br />
+        <a href="https://www.whatismybrowser.com/guides/how-to-enable-javascript/" target="_blank"><button class="noscript-button noscript-clickable">Help me enable JavaScript</button></a>
+        <br />
+        <br />
+        <div>Refresh this page after you enable it.</div>
+        <br />
+        <br />
+        <br />
+        <div style="text-align:left">
+          FAQ:
+          <br />
+          <br />
+          <details>
+            <summary class="noscript-clickable">
+              What is JavaScript?
+            </summary>
+            <p class="noscript-p">JavaScript is a computer language that makes websites interactive.</p>
+          </details>
+          <br />
+          <details>
+            <summary class="noscript-clickable">
+              Why do I need JavaScript?
+            </summary>
+            <p class="noscript-p">About 97% of websites use JavaScript. If you have it disabled, most websites will be broken, or completely unavailable.</p>
+          </details>
+        </div>
+      </div>
+    </noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

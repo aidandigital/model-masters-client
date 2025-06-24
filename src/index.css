@@ -1,0 +1,31 @@
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
+
+/* Import AD Icon */ 
+@import url('https://cdn.aidandigital.com/ad-icon/css/fontello-embedded.css');
+
+@import "tailwindcss";
+
+@theme {
+    --color-primarydark: #a61c00;
+    --color-secondarydark: #ca2f10;
+    --color-thirdlydark: #e4c8c8;
+    --color-primarylight: white;
+    --color-secondarylight: #e2e2e2;
+    --color-primarybackground: white;
+    --color-secondarybackground: #ececec;
+    --color-thirdlybackground: #f3f3f3;
+    --color-note: #6d6d6d;
+    --color-warning: #e9c600;
+    --color-danger: #ca2f10;
+    --color-good: #00944a;
+    --color-success: darkgreen;
+    --font-sans: Source Sans Pro, sans-serif;
+    --font-serif: Merriweather, serif;
+    --box-shadow: 0px 1px 10px 2px rgb(233, 233, 233);
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
