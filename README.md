@@ -1,7 +1,7 @@
 # Model Masters
 
 ## Description
-A custom platform for car and vehicle model enthusiasts to share their creations. Users can sign up, or log in as a guest in order to view posts made by other users in a fashion similar to social media sites. Verified users can publish their models along with up to 10 photos, a description, and more.
+A custom platform for car and vehicle model enthusiasts to share their creations. Users can log in or register for an account in order to view posts made by other users in a fashion similar to social media sites. Verified users can publish their models along with photos, a description, and more.
 
 ## Tech used
 ### Frontend:
