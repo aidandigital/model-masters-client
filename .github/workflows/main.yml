@@ -1,0 +1,38 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main  # Trigger deployment on pushing to the main branch.
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      
+    # Checkout code:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # Set up Node.js environment:
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '20.11.1'
+
+    # Install dependencies:
+    - name: Install dependencies
+      run: npm install
+
+    # Build the app using Vite:
+    - name: Build the app
+      run: npm run build
+
+    # Upload to S3 using AWS CLI:
+    - name: Deploy to S3
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+      run: |
+        aws s3 sync dist/ s3://model-masters-prod-client --delete --exact-timestamps
