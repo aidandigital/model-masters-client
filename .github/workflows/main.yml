@@ -24,6 +24,13 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    - name: Set production environment variables
+      run: |
+        echo "VITE_REPO_URL=https://github.com/aidandigital/model-masters-client" >> .env.production
+        echo "VITE_APP_MAX_IMAGES=10" >> .env.production
+        echo "VITE_APP_ALLOW_GUEST_LOGIN=false" >> .env.production
+        echo "VITE_API_URL=https://model-masters-api.aidandigital.com" >> .env.production
+
     # Build the app using Vite:
     - name: Build the app
       run: npm run build

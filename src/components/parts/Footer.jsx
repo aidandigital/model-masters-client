@@ -40,7 +40,7 @@ const Footer = () => {
         <p className="text-center text-xs">
           <span>&copy; {new Date().getFullYear()}</span>
           <span> Aidan Digital. All rights reserved. </span>
-          <a href={"https://aidandigital.com/contact?ref=" + window.location.href + "&body=I wish to have my data associated with the email above in the Model Masters database deleted permanently. I understand that you will first have to verify my identity via email before making any changes to my data, and that if I no longer have access to the email associated with my data, I do not respond within 48 hours, or I provide the wrong email, you will not be able to make any changes to my data."}>
+          <a href={"https://aidandigital.com/contact?ref=" + window.location.href + "&body=I wish to have my data associated with the email above in the Model Masters database <deleted OR updated> (please specify how your data should be updated, if you chose that option). I understand that you will first have to verify my identity via email before making any changes to my data, and that if I no longer have access to the email associated with my data, I do not respond within 48 hours, or I provide the wrong email, you will not be able to make any changes to my data."} target="blank">
             Manage your Data
           </a>
         </p>

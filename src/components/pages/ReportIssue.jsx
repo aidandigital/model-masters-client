@@ -105,7 +105,7 @@ render() {
                         <TextInput name="url" type="text" value={this.state.url} onChange={this.setInput} error={this.state.message.url} placeholder="Paste the URL of the issue here" disabled={this.state.type === "model" || this.state.type === "user"} />
                         {this.state.message.type}
                         <Label>Description of the Issue</Label>
-                        <ParagraphInput name="description" onChange={this.setInput} value={this.state.password} error={this.state.message.description} placeholder="Please tell us what's going on in as much detail as you can" />
+                        <ParagraphInput name="description" onChange={this.setInput} value={this.state.password} error={this.state.message.description} placeholder="Please describe what's going on in as much detail as you can" />
                         <Spacer height="4" />
                         <div className={this.state.loading ? "cursor-not-allowed opacity-60" : null}>
                             <SubmitButton disabled={this.state.loading} onClick={this.submitForm}>Report</SubmitButton>
