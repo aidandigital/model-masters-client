@@ -60,7 +60,6 @@ class EditModel extends Component {
 
     submitForm = (e) => {
         e.preventDefault();
-
         this.setState({loading: true});
 
         instance
@@ -80,14 +79,13 @@ class EditModel extends Component {
 
             if (!res.data.success) {
                 this.setState({ success: false, message: res.data.message, errType: res.data.errType });
+
             } else {
                 this.setState({ success: true });
             }
 
         }).catch((err) => {
-            console.log(err)
-            this.setState({loading: false});
-            this.setState({success: false, message: {general: "An error occurred, please try again later"}});
+            this.setState({success: false, loading: false, message: {general: "An error occurred, please try again later"}});
         });;
     }
 
@@ -134,11 +132,11 @@ render() {
                             <ParagraphInput name="facts" value={this.state.facts} onChange={this.setInput} placeholder="Are there any interesting facts about this model, mistakes you made, or cool stories?" error={this.state.message.facts} />
                             <Note>Separate different facts above by hitting enter or return on your keyboard</Note>
                             <Spacer height="4" />
-                            <div className={this.state.loading || this.state.success ? "cursor-not-allowed opacity-60" : null}>
-                                <Link to={"/model/" + this.state.model_id}>
-                                    <Button type="outline">Back to Model</Button>
-                                </Link>
-                                <Button type="important" disabled={this.state.loading || this.state.success} /* <-- Important */ onClick={this.submitForm}>Save</Button>
+                            <Link to={"/model/" + this.state.model_id}>
+                                <Button type="outline">Back to Model</Button>
+                            </Link>
+                            <div className={this.state.loading ? "cursor-not-allowed opacity-60" : null}>
+                                <Button type="important" disabled={this.state.loading} /* <-- Important */ onClick={this.submitForm}>Save</Button>
                             </div>
                             {this.state.loading ? <div className="inline-block relative top-3 mr-3 ml-2"><TinyLoader /></div> : null}
                             <Message isSuccess={this.state.success} errType={this.state.errType}>{this.state.message.general}</Message>

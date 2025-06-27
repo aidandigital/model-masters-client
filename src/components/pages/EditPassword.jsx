@@ -21,6 +21,7 @@ class EditPassword extends Component {
             newPassword: "",
             success: false,
             errType: "",
+            loading: false,
         }
     }
 
@@ -30,21 +31,23 @@ class EditPassword extends Component {
 
     submitForm = (e) => {
         e.preventDefault();
+        this.setState({loading: true});
 
-            instance.post('/api/editPassword',
-                {
-                    oldPassword: this.state.oldPassword,
-                    newPassword: this.state.newPassword,
-                }
-            ).then((data) => {
-                if (!data.data.success) {
-                    this.setState({ success: false, message: data.data.message, errType: data.data.errType });
-                } else {
-                    this.setState({ success: true });
-                }
-            }).catch(() => {
-                this.setState({success: false, message: {general: "An error occurred, please try again later"}})
-            });;
+        instance.post('/api/editPassword',
+            {
+                oldPassword: this.state.oldPassword,
+                newPassword: this.state.newPassword,
+            }
+        ).then((data) => {
+            if (!data.data.success) {
+                this.setState({ success: false, loading: false, message: data.data.message, errType: data.data.errType });
+
+            } else {
+                this.setState({ success: true, loading: false });
+            }
+        }).catch(() => {
+            this.setState({success: false, loading: false, message: {general: "An error occurred, please try again later"}})
+        });;
     }
 
 render() {
@@ -77,7 +80,10 @@ render() {
                 <Label>New Password</Label>
                 <TextInput name="newPassword" type="password" onChange={this.setInput} value={this.state.newPassword} error={this.state.message.newPassword} placeholder="Enter what you want your new password to be" />
                 <Spacer height="4" />
-                <SubmitButton onClick={this.submitForm}>Save</SubmitButton>
+                <div className={this.state.loading ? "cursor-not-allowed opacity-60" : null}>
+                    <SubmitButton onClick={this.submitForm} disabled={this.state.loading}>Save</SubmitButton>
+                </div>
+                {this.state.loading ? <div className="inline-block relative top-3 mr-3 ml-2"><TinyLoader /></div> : null}
                 {(this.state.success ? null : <Message isSuccess={false} errType={this.state.errType}>{this.state.message.general}</Message>)}
             </form>
             <Spacer />

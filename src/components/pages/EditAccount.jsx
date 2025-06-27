@@ -29,6 +29,7 @@ class Register extends Component {
             errType: '',
             success: false,
             showIps: false,
+            loading: false,
         }
     }
 
@@ -42,6 +43,8 @@ class Register extends Component {
 
     submitForm = (e) => {
         e.preventDefault();
+        this.setState({ loading: true});
+
         instance.post('/api/editAccount',
             {
                 name: this.state.name,
@@ -51,12 +54,13 @@ class Register extends Component {
             }
         ).then((data) => {
             if (!data.data.success) {
-                this.setState({ success: false, message: data.data.message, errType: data.data.errType });
+                this.setState({ success: false, loading: false, message: data.data.message, errType: data.data.errType });
+
             } else {
-                this.setState({ success: true });
+                this.setState({ success: true, loading: false });
             }
         }).catch(() => {
-            this.setState({success: false, message: {general: "An error occurred, please try again later"}})
+            this.setState({success: false, loading: false, message: {general: "An error occurred, please try again later"}})
         });;
     }
 
@@ -93,12 +97,17 @@ render() {
                     <Link to={"/user/" + currentUser._id}>
                         <Button type="outline">Back to Profile</Button>
                     </Link>
-                    <Button type="important" onClick={this.submitForm}>Save</Button>
+                    <div className={this.state.loading ? "cursor-not-allowed opacity-60" : null}>
+                        <Button type="important" onClick={this.submitForm} disabled={this.state.loading}>Save</Button>
+                    </div>
                 </div>
             </>
             ) : (
-                <SubmitButton onClick={this.submitForm}>Done</SubmitButton>
+                <div className={this.state.loading ? "cursor-not-allowed opacity-60" : null}>
+                    <SubmitButton onClick={this.submitForm} disabled={this.state.loading}>Done</SubmitButton>
+                </div>
             )}
+            {this.state.loading ? <div className="inline-block relative top-3 mr-3 ml-2"><TinyLoader /></div> : null}
             {(this.state.success ? null : <Message isSuccess={false} errType={this.state.errType}>{this.state.message.general}</Message>)}
             <Spacer />
         </form>

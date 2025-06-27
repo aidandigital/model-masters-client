@@ -18,6 +18,7 @@ class Login extends Component {
             success: false,
             message: '',
             customMessage: props.customMessage,
+            loading: false,
         }
     }
 
@@ -27,16 +28,18 @@ class Login extends Component {
 
     submitForm = (e) => {
         e.preventDefault();
+        this.setState({loading: true});
+
         instance.post('/api/login',
             {
                 email: this.state.email,
                 password: this.state.password
             }
         ).then((data) => {
-            this.setState({ message: data.data.message });
-            this.setState({ success: data.data.success });
+            this.setState({ message: data.data.message, loading: false, success: data.data.success });
+
         }).catch(() => {
-            this.setState({success: false, message: {general: "An error occurred, please try again later"}})
+            this.setState({success: false, loading: false, message: {general: "An error occurred, please try again later"}})
         });
     }
 
@@ -44,10 +47,10 @@ class Login extends Component {
         e.preventDefault();
         instance.post('/api/loginAsGuest', {})
         .then((data) => {
-            this.setState({ message: data.data.message });
-            this.setState({ success: data.data.success });
+            this.setState({ message: data.data.message, loading: false, success: data.data.success });
+
         }).catch(() => {
-            this.setState({success: false, message: {general: "An error occurred, please try again later"}})
+            this.setState({success: false, loading: false, message: {general: "An error occurred, please try again later"}})
         });
     }
 
@@ -62,7 +65,9 @@ render() {
                 <TextInput name="email" type="email" value={this.state.email} onChange={this.setInput} placeholder="Your email" />
                 <TextInput name="password" type="password" value={this.state.password} onChange={this.setInput} placeholder="Password" />
                 {(this.state.success ? <Navigate to="/" /> : <Message isSuccess={false}>{this.state.message}</Message>)}
-                <SubmitButton className="hover:bg-purple-700" onClick={this.submitForm}>Log in</SubmitButton>
+                <div className={this.state.loading ? "cursor-not-allowed opacity-60" : null}>
+                    <SubmitButton className="hover:bg-purple-700" onClick={this.submitForm} disabled={this.state.loading}>Log in</SubmitButton>
+                </div>
                 {
                     import.meta.env.VITE_APP_ALLOW_GUEST_LOGIN === 'true' ? (
                     <>
@@ -71,12 +76,15 @@ render() {
                             or
                             <div className="inline-block relative bottom-1 mx-2 w-16 lg:w-28 h-0.5 bg-black"></div>
                         </div>
-                        <Button fullWidth={true} type="outline" onClick={this.loginAsGuest}>Log in as Guest</Button>
+                        <div className={this.state.loading ? "cursor-not-allowed opacity-60" : null}>
+                            <Button fullWidth={true} type="outline" onClick={this.loginAsGuest} disabled={this.state.loading}>Log in as Guest</Button>
+                        </div>
                         <Spacer />
                     </>
                     ) : null
                 }
                 <div className="text-center"><span>Want an account?</span><Link className="p-2 text-primarydark hover:opacity-80 duration-200" to="/register">Sign up here</Link></div>
+                {this.state.loading ? <div className="inline-block relative top-3 mr-3 ml-2"><TinyLoader /></div> : null}
             </form>
             </div>
             <Spacer />

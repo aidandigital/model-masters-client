@@ -21,6 +21,7 @@ class DeleteModel extends Component {
             password: "",
             success: false,
             errType: "",
+            loading: false,
         }
     }
 
@@ -30,22 +31,23 @@ class DeleteModel extends Component {
 
     submitForm = (e) => {
         e.preventDefault();
+        this.setState({loading: true});
 
-            instance.post('/api/deleteModel',
-                {
-                    model_id: this.state.model_id,
-                    reason: this.state.reason,
-                    password: this.state.password,
-                }
-            ).then((data) => {
-                if (!data.data.success) {
-                    this.setState({ success: false, message: data.data.message, errType: data.data.errType });
-                } else {
-                    this.setState({ success: true });
-                }
-            }).catch(() => {
-                this.setState({success: false, message: {general: "An error occurred, please try again later"}})
-            });;
+        instance.post('/api/deleteModel',
+            {
+                model_id: this.state.model_id,
+                reason: this.state.reason,
+                password: this.state.password,
+            }
+        ).then((data) => {
+            if (!data.data.success) {
+                this.setState({ success: false, loading: false, message: data.data.message, errType: data.data.errType });
+            } else {
+                this.setState({ success: true, loading: false });
+            }
+        }).catch(() => {
+            this.setState({success: false, loading: false, message: {general: "An error occurred, please try again later"}})
+        });;
     }
 
 render() {
@@ -69,7 +71,10 @@ render() {
                 <Label>Password</Label>
                 <TextInput name="password" type="password" onChange={this.setInput} value={this.state.password} error={this.state.message.password} placeholder="Enter your password to verify this" />
                 <Spacer height="3" />
-                <SubmitButton onClick={this.submitForm}>Delete forever</SubmitButton>
+                <div className={this.state.loading ? "cursor-not-allowed opacity-60" : null}>
+                    <SubmitButton onClick={this.submitForm} disabled={this.state.loading}>Delete forever</SubmitButton>
+                </div>
+                {this.state.loading ? <div className="inline-block relative top-3 mr-3 ml-2"><TinyLoader /></div> : null}
                 {(this.state.success ? null : <Message isSuccess={false} errType={this.state.errType}>{this.state.message.general}</Message>)}
             </form>
             <Spacer />

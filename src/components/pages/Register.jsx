@@ -17,6 +17,7 @@ class Register extends Component {
             password: '',
             message: {},
             success: false,
+            loading: false,
         }
     }
 
@@ -26,6 +27,8 @@ class Register extends Component {
 
     submitForm = (e) => {
         e.preventDefault();
+        this.setState({ loading: true });
+
         instance.post('/api/register',
             {
                 name: this.state.name,
@@ -34,10 +37,10 @@ class Register extends Component {
             }
         ).then((data) => {
             if (data.data.message) {
-                this.setState({ message: data.data.message });
-                this.setState({ success: false });
+                this.setState({ message: data.data.message, loading: false, success: false });
+
             } else {
-                this.setState({ success: true });
+                this.setState({ success: true, loading: false });
             }
         })
 }
@@ -52,8 +55,11 @@ render() {
             <TextInput name="email" type="email" value={this.state.email} onChange={this.setInput} error={this.state.message.email} placeholder="Your email" />
             <TextInput name="password" type="password" value={this.state.password} onChange={this.setInput} error={this.state.message.password} placeholder="Password" />
             <Note>Only your first name will be shared with others.</Note>
-            <SubmitButton onClick={this.submitForm}>Sign up</SubmitButton>
+            <div className={this.state.loading ? "cursor-not-allowed opacity-60" : null}>
+                <SubmitButton onClick={this.submitForm} disabled={this.state.loading}>Sign up</SubmitButton>
+            </div>
             <div className="text-center"><span>Already have an account?</span><Link className="p-2 text-primarydark hover:opacity-80 duration-200" to="/login">Log in</Link></div>
+            {this.state.loading ? <div className="inline-block relative top-3 mr-3 ml-2"><TinyLoader /></div> : null}
         </form>
         {this.state.success ? <Navigate to="/home" /> : null}
         </Popup>
