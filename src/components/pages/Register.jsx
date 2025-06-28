@@ -7,6 +7,7 @@ import Note from "../parts/Note";
 import Title from "../parts/Title";
 import { Link, Navigate } from "react-router-dom";
 import instance from "../../axiosInstance";
+import TinyLoader from "../forms/TinyLoader";
 
 class Register extends Component {
     constructor(props) {

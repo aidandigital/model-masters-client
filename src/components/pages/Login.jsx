@@ -8,6 +8,7 @@ import Message from "../parts/Message";
 import Spacer from "../parts/Spacer";
 import Title from "../parts/Title";
 import instance from "../../axiosInstance";
+import TinyLoader from "../forms/TinyLoader";
 
 class Login extends Component {
     constructor(props) {

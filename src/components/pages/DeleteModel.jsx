@@ -9,6 +9,7 @@ import Spacer from "../parts/Spacer";
 import instance from "../../axiosInstance";
 import Header from "../parts/Header";
 import Footer from "../parts/Footer";
+import TinyLoader from "../forms/TinyLoader";
 
 class DeleteModel extends Component {
     constructor(props) {

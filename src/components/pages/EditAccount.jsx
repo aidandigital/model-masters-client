@@ -15,6 +15,7 @@ import Button from "../parts/Button";
 import instance from "../../axiosInstance";
 import Header from "../parts/Header";
 import { KeyIcon, EyeIcon, EyeOffIcon } from "@heroicons/react/outline";
+import TinyLoader from "../forms/TinyLoader";
 
 class Register extends Component {
     constructor(props) {

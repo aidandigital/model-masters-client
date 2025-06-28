@@ -113,7 +113,7 @@ class AddModel extends Component {
                             <Title>Publish your Model</Title>
                             <form className="w-full sm:w-4/5 md:w-3/5 m-auto">
                                 <Label>Model name</Label>
-                                <TextInput name="name" type="text" value={this.state.name} onChange={this.setInput} placeholder="Ex:  68' Dodge Charger" error={this.state.message.name} />
+                                <TextInput name="name" type="text" value={this.state.name} onChange={this.setInput} placeholder="Ex: '68 Dodge Charger" error={this.state.message.name} />
                                 <Label>Model type</Label>
                                 <div className="rounded-md border my-3" onChange={this.setInput}>
                                     <span className="inline-block w-6/12">

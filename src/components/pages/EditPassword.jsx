@@ -11,6 +11,7 @@ import Header from "../parts/Header";
 import Footer from "../parts/Footer";
 import { Link } from "react-router-dom";
 import Button from "../parts/Button";
+import TinyLoader from "../forms/TinyLoader";
 
 class EditPassword extends Component {
     constructor(props) {
