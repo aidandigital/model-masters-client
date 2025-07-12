@@ -23,7 +23,7 @@ import Button from "../parts/Button";
 class EditModel extends Component {
     constructor(props) {
         super(props);
-        console.log(props.data.imageFolderId)
+        
         this.state = {
             model_id: props.data.model_id,
             imageFolderId: props.data.imageFolderId,

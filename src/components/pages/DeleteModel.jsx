@@ -16,7 +16,7 @@ class DeleteModel extends Component {
         super(props);
 
         this.state = {
-            model_id: props.data._id,
+            model_id: props.data.model_id,
             reason: "",
             message: {},
             password: "",
@@ -67,7 +67,7 @@ render() {
       <>
         <Header />
         <Section fullHeight={true}>
-            <Title>Delete a Model</Title>
+            <Title>Delete your Model</Title>
             <form className="w-full sm:w-4/5 md:w-3/5 m-auto">
                 <Label>Password</Label>
                 <TextInput name="password" type="password" onChange={this.setInput} value={this.state.password} error={this.state.message.password} placeholder="Enter your password to verify this" />
