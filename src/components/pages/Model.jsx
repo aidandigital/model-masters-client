@@ -59,7 +59,7 @@ const Model = (props) => {
               <p>Completed in {props.data.completionMonth} of {props.data.completionYear}</p>
               <Spacer />
               <p>{props.data.about}</p>
-              {props.data.facts.length > 0 && props.data.facts[0] !== "" ? 
+              {props.data.facts !== null && props.data.facts.length > 0 && props.data.facts[0] !== "" ? 
               <>
                 <Subtitle>Fun Facts</Subtitle>
                 <ul class="list-inside list-disc ml-6">
